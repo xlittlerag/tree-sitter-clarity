@@ -1,0 +1,92 @@
+=====================================
+Function definition
+=====================================
+
+(define-public (hello-world (name (string-ascii 32)))
+  (let
+    (
+      (foo (+ 3 1))
+      (bar u5)
+      (user tx-sender)
+    )
+    (ok 1)
+  )
+)
+
+---
+
+(source
+      (declaration
+        (function_definition
+          (function_signature
+            (identifier)
+            (function_parameter
+              (identifier)
+              (parameter_type
+                (type_name
+                  (ascii_string_type)))))
+          (let_statement
+            (let_variable_definition
+              (identifier)
+              (parameter
+                (common_statement
+                  (arithmetic_function)
+                  (parameter
+                    (literal
+                      (int_lit)))
+                  (parameter
+                    (literal
+                      (int_lit))))))
+            (let_variable_definition
+              (identifier)
+              (parameter
+                (literal
+                  (uint_lit))))
+            (let_variable_definition
+              (identifier)
+              (parameter
+                (global)))
+            (parameter
+              (literal
+                (response_lit
+                  (parameter
+                    (literal
+                      (int_lit))))))))))
+
+=====================================
+Trait definition
+=====================================
+
+;; mainnet principal: 'M0R8C3RD1EHAP2A37ERSSSZSWCS9T2GY5FGXNALC.sip-010-trait
+
+(define-trait sip-010-trait
+  (
+    ;; Transfer from the caller to a new principal
+    (transfer (uint principal principal (optional (buff 34))) (response bool uint))
+  )
+)
+
+---
+
+(source
+      (comment)
+      (declaration
+        (trait_definition
+          (identifier)
+          (comment)
+          (function_signature_for_trait
+            (identifier)
+            (parameter_type
+              (type_name))
+            (parameter_type
+              (type_name))
+            (parameter_type
+              (type_name))
+            (parameter_type
+              (type_name
+                (optional_type
+                (type_name
+                    (buffer_type)))))
+            (type_name
+              (response_type
+                (type_name)))))))

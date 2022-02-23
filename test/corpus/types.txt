@@ -1,0 +1,122 @@
+==================
+Comments (This is not a type though)
+==================
+
+;; Tests start here!
+
+---
+
+(source
+  (comment))
+
+==================
+Booleans
+==================
+
+(define-data-var bool-1 (list 2 bool) (list true false))
+
+---
+
+(source
+  (declaration
+    (variable_definition
+      (identifier)
+      (type_name (list_type (type_name)))
+      (parameter (literal (list_lit (parameter (literal (bool_lit))) (parameter (literal (bool_lit))))))))
+)
+
+=====================================
+Numbers
+=====================================
+
+(define-data-var num int 42)
+(var-set num -193)
+(define-data-var num uint u13)
+
+---
+
+(source
+  (declaration
+    (variable_definition
+      (identifier)
+      (type_name)
+      (parameter (literal (int_lit)))))
+  (declaration
+    (common_statement
+      (identifier)
+      (parameter (identifier))
+      (parameter (literal (int_lit)))))
+  (declaration
+    (variable_definition
+      (identifier)
+      (type_name)
+      (parameter (literal (uint_lit)))))
+)
+
+=====================================
+Principals
+=====================================
+
+(define-constant OWNER 'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8Q)
+(define-constant SIBLING_CONTRACT 'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8Q.my-awesome-contract)
+
+---
+
+(source
+  (declaration
+    (constant_definition
+      (identifier)
+      (parameter (literal (standard_principal_lit)))
+    )
+  )
+  (declaration
+    (constant_definition
+      (identifier)
+      (parameter (literal
+        (contract_principal_lit (standard_principal_lit) (identifier))))
+    )
+  )
+)
+
+=====================================
+Buffers
+=====================================
+
+(define-constant BUFF_LIMIT 0xffff3)
+(define-data-var current-buffer (buff 30) 0x68656c6c6f21)
+
+---
+
+(source
+  (declaration
+    (constant_definition
+      (identifier)
+      (parameter (literal (buffer_lit)))
+    )
+  )
+  (declaration
+    (variable_definition
+      (identifier)
+      (type_name (buffer_type))
+      (parameter (literal (buffer_lit)))
+    )
+  )
+)
+
+=====================================
+Strings
+=====================================
+
+(map-set message {author: "John Smith", content: u"And this is an UTF-8 string \u{1f601}"})
+
+---
+
+(source
+  (declaration
+    (common_statement
+      (identifier) (parameter (identifier)) (parameter (literal (tuple_lit
+        (identifier) (parameter (literal (ascii_string_lit)))
+        (identifier) (parameter (literal (utf8_string_lit))))))
+    )
+  )
+)

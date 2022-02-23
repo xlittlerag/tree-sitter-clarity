@@ -1,0 +1,30 @@
+{
+  "name": "tree-sitter-clarity",
+  "version": "0.0.1",
+  "description": "Tree sitter parser for Clarity",
+  "main": "bindings/node",
+  "license": "MIT",
+  "keywords": [
+    "parsing",
+    "incremental"
+  ],
+  "dependencies": {
+    "nan": "^2.12.1"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.4"
+  },
+  "scripts": {
+    "test": "tree-sitter test"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.clar",
+      "file-types": ["clar"],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
+      "injection-regex": "^(clar|clarity)$"
+    }
+  ]
+}
