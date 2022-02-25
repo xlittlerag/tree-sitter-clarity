@@ -3,7 +3,7 @@
 
 This repository contains a grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
-The goal of this project is to provide an parser efficient low-dependency parser for clarity which targets most solidity versions in use and is designed for enabling metaprogramming.
+The goal of this project is to provide an parser efficient low-dependency parser for clarity.
 
 
 ### Navigating this repository
