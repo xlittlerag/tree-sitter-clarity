@@ -26,9 +26,9 @@ module.exports = grammar({
 
   rules: {
     //  -- [ Contract ] --
-    source: ($) => seq(repeat($.declaration)),
+    source: ($) => seq(repeat($._declaration)),
 
-    declaration: ($) =>
+    _declaration: ($) =>
       choice(
         $.trait_definition,
         $.trait_implementation,
@@ -65,12 +65,12 @@ module.exports = grammar({
       ),
 
     constant_definition: ($) =>
-      enclosed(seq("define-constant", $.identifier, $.parameter)),
+      enclosed(seq("define-constant", $.identifier, $._parameter)),
 
     constant: (_) => /[A-Z_][A-Z1-9_]*/, // TODO(): Can we make a rule to identify lowercase constants?
 
     variable_definition: ($) =>
-      enclosed(seq("define-data-var", $.identifier, $.type_name, $.parameter)),
+      enclosed(seq("define-data-var", $.identifier, $.type_name, $._parameter)),
 
     mapping_definition: ($) =>
       prec(
@@ -101,7 +101,7 @@ module.exports = grammar({
             "function_name",
             choice($.identifier, $.arithmetic_function, $.boolean_function)
           ),
-          optional(repeat($.parameter))
+          optional(repeat($._parameter))
         )
       ),
 
@@ -111,32 +111,27 @@ module.exports = grammar({
           "let",
           enclosed(repeat($.let_variable_definition)),
           repeat($.common_statement),
-          $.parameter
+          $._parameter
         )
       ),
 
-    let_variable_definition: ($) => enclosed(seq($.identifier, $.parameter)),
+    let_variable_definition: ($) => enclosed(seq($.identifier, $._parameter)),
 
     function_signature: ($) =>
-      enclosed(
-        seq(
-          $.identifier,
-          optional(repeat($.function_parameter))
-        )
-      ),
+      enclosed(seq($.identifier, optional(repeat($.function_parameter)))),
 
-    function_parameter: ($) => enclosed(seq($.identifier, $.parameter_type)),
+    function_parameter: ($) => enclosed(seq($.identifier, $._parameter_type)),
 
     function_signature_for_trait: ($) =>
       enclosed(
         seq(
           $.identifier,
-          enclosed(optional(repeat($.parameter_type))),
+          enclosed(optional(repeat($._parameter_type))),
           $.type_name
         )
       ),
 
-    parameter_type: ($) => choice($.type_name, $.trait_type),
+    _parameter_type: ($) => choice($.type_name, $.trait_type),
 
     trait_type: ($) => seq("<", $.identifier, ">"),
 
@@ -190,9 +185,9 @@ module.exports = grammar({
 
     response_type: ($) => enclosed(seq("response", $.type_name, "uint")),
 
-    parameter: ($) =>
+    _parameter: ($) =>
       choice(
-        $.literal,
+        $._literal,
         $.global,
         $.common_statement,
         $.let_statement,
@@ -200,7 +195,7 @@ module.exports = grammar({
         $.identifier
       ),
 
-    literal: ($) =>
+    _literal: ($) =>
       choice(
         $.int_lit,
         $.uint_lit,
@@ -230,10 +225,11 @@ module.exports = grammar({
     ascii_string_lit: (_) => seq('"', optional(/[^"\\\n]+|\\\r?\n/), '"'),
     utf8_string_lit: (_) => seq("u", '"', optional(/[^"\n]+|\\\r?\n/), '"'),
 
-    list_lit: ($) => enclosed(seq("list", optional(repeat($.parameter)))),
+    list_lit: ($) =>
+      enclosed(seq($.list_lit_token, optional(repeat($._parameter)))),
+    list_lit_token: (_) => "list",
 
-    optional_lit: ($) => choice($.none_lit, $.some_lit),
-    some_lit: ($) => enclosed(seq("some", $.parameter)),
+    some_lit: ($) => enclosed(seq("some", $._parameter)),
     none_lit: (_) => "none",
 
     tuple_lit: ($) =>
@@ -243,14 +239,14 @@ module.exports = grammar({
           seq(
             field("key", $.identifier),
             ":",
-            field("value", $.parameter),
+            field("value", $._parameter),
             optional(",")
           )
         ),
         "}"
       ),
 
-    response_lit: ($) => enclosed(seq(choice("ok", "err"), $.parameter)),
+    response_lit: ($) => enclosed(seq(choice("ok", "err"), $._parameter)),
 
     global: (_) => choice(...GLOBALS),
 

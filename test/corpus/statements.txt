@@ -16,42 +16,28 @@ Function definition
 ---
 
 (source
-      (declaration
-        (function_definition
-          (function_signature
+      (function_definition
+        (function_signature
+          (identifier)
+          (function_parameter
             (identifier)
-            (function_parameter
-              (identifier)
-              (parameter_type
-                (type_name
-                  (ascii_string_type)))))
-          (let_statement
-            (let_variable_definition
-              (identifier)
-              (parameter
-                (common_statement
-                  (arithmetic_function)
-                  (parameter
-                    (literal
-                      (int_lit)))
-                  (parameter
-                    (literal
-                      (int_lit))))))
-            (let_variable_definition
-              (identifier)
-              (parameter
-                (literal
-                  (uint_lit))))
-            (let_variable_definition
-              (identifier)
-              (parameter
-                (global)))
-            (parameter
-              (literal
-                (response_lit
-                  (parameter
-                    (literal
-                      (int_lit))))))))))
+            (type_name
+              (ascii_string_type))))
+        (let_statement
+          (let_variable_definition
+            (identifier)
+            (common_statement
+              (arithmetic_function)
+              (int_lit)
+              (int_lit)))
+          (let_variable_definition
+            (identifier)
+            (uint_lit))
+          (let_variable_definition
+            (identifier)
+            (global))
+          (response_lit
+            (int_lit)))))
 
 =====================================
 Trait definition
@@ -70,23 +56,18 @@ Trait definition
 
 (source
       (comment)
-      (declaration
-        (trait_definition
+      (trait_definition
+        (identifier)
+        (comment)
+        (function_signature_for_trait
           (identifier)
-          (comment)
-          (function_signature_for_trait
-            (identifier)
-            (parameter_type
-              (type_name))
-            (parameter_type
-              (type_name))
-            (parameter_type
-              (type_name))
-            (parameter_type
+          (type_name)
+          (type_name)
+          (type_name)
+          (type_name
+            (optional_type
               (type_name
-                (optional_type
-                (type_name
-                    (buffer_type)))))
-            (type_name
-              (response_type
-                (type_name)))))))
+                (buffer_type))))
+          (type_name
+            (response_type
+              (type_name))))))

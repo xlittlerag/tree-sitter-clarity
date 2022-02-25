@@ -18,12 +18,15 @@ Booleans
 ---
 
 (source
-  (declaration
-    (variable_definition
-      (identifier)
-      (type_name (list_type (type_name)))
-      (parameter (literal (list_lit (parameter (literal (bool_lit))) (parameter (literal (bool_lit))))))))
-)
+      (variable_definition
+        (identifier)
+        (type_name
+          (list_type
+            (type_name)))
+        (list_lit
+          (list_lit_token)
+          (bool_lit)
+          (bool_lit))))
 
 =====================================
 Numbers
@@ -36,22 +39,18 @@ Numbers
 ---
 
 (source
-  (declaration
-    (variable_definition
-      (identifier)
-      (type_name)
-      (parameter (literal (int_lit)))))
-  (declaration
-    (common_statement
-      (identifier)
-      (parameter (identifier))
-      (parameter (literal (int_lit)))))
-  (declaration
-    (variable_definition
-      (identifier)
-      (type_name)
-      (parameter (literal (uint_lit)))))
-)
+      (variable_definition
+        (identifier)
+        (type_name)
+        (int_lit))
+      (common_statement
+        (identifier)
+        (identifier)
+        (int_lit))
+      (variable_definition
+        (identifier)
+        (type_name)
+        (uint_lit)))
 
 =====================================
 Principals
@@ -63,20 +62,14 @@ Principals
 ---
 
 (source
-  (declaration
-    (constant_definition
-      (identifier)
-      (parameter (literal (standard_principal_lit)))
-    )
-  )
-  (declaration
-    (constant_definition
-      (identifier)
-      (parameter (literal
-        (contract_principal_lit (standard_principal_lit) (identifier))))
-    )
-  )
-)
+  (constant_definition
+        (identifier)
+        (standard_principal_lit))
+      (constant_definition
+        (identifier)
+        (contract_principal_lit
+          (standard_principal_lit)
+          (identifier))))
 
 =====================================
 Buffers
@@ -88,20 +81,14 @@ Buffers
 ---
 
 (source
-  (declaration
-    (constant_definition
-      (identifier)
-      (parameter (literal (buffer_lit)))
-    )
-  )
-  (declaration
-    (variable_definition
-      (identifier)
-      (type_name (buffer_type))
-      (parameter (literal (buffer_lit)))
-    )
-  )
-)
+  (constant_definition
+        (identifier)
+        (buffer_lit))
+      (variable_definition
+        (identifier)
+        (type_name
+          (buffer_type))
+        (buffer_lit)))
 
 =====================================
 Strings
@@ -112,11 +99,11 @@ Strings
 ---
 
 (source
-  (declaration
-    (common_statement
-      (identifier) (parameter (identifier)) (parameter (literal (tuple_lit
-        (identifier) (parameter (literal (ascii_string_lit)))
-        (identifier) (parameter (literal (utf8_string_lit))))))
-    )
-  )
-)
+      (common_statement
+        (identifier)
+        (identifier)
+        (tuple_lit
+        (identifier)
+          (ascii_string_lit)
+          (identifier)
+          (utf8_string_lit))))

@@ -59,11 +59,11 @@
  "is-in-regtest"
  "stx-liquid-supply"
  "tx-sender"
- (list_lit ("list"))
  (none_lit)
  "some"
  "ok"
  "err"
+ (list_lit_token)
 ] @keyword
 
 ; Punctuation
