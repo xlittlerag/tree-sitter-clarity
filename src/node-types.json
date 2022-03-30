@@ -1000,7 +1000,7 @@
     "fields": {
       "key": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "identifier",
@@ -1010,7 +1010,7 @@
       },
       "value": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "ascii_string_lit",
@@ -1094,7 +1094,7 @@
     "fields": {
       "key": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "identifier",
@@ -1104,7 +1104,7 @@
       },
       "value_type": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "type_name",
@@ -1115,7 +1115,7 @@
     }
   },
   {
-    "type": "tuple_type_for_signature",
+    "type": "tuple_type_for_trait",
     "named": true,
     "fields": {
       "key": {
@@ -1173,7 +1173,7 @@
           "named": true
         },
         {
-          "type": "tuple_type_for_signature",
+          "type": "tuple_type_for_trait",
           "named": true
         },
         {
@@ -1182,11 +1182,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "utf8_string_lit",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "utf8_string_type",
@@ -1481,10 +1476,6 @@
     "named": false
   },
   {
-    "type": "u",
-    "named": false
-  },
-  {
     "type": "uint",
     "named": false
   },
@@ -1495,6 +1486,10 @@
   {
     "type": "use-trait",
     "named": false
+  },
+  {
+    "type": "utf8_string_lit",
+    "named": true
   },
   {
     "type": "{",

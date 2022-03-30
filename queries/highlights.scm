@@ -26,7 +26,8 @@
 (function_signature (identifier) @function)
 (function_signature_for_trait (identifier) @function)
 (common_statement
-  function_name:  [(identifier) (arithmetic_function) (boolean_function)] @function)
+  function_name: (identifier) @function)
+[(arithmetic_function) (boolean_function)] @function
 [
  "let"
 ] @function
@@ -36,10 +37,8 @@
 (function_parameter) @variable.parameter
 
 (tuple_lit key: (identifier) @property)
-(tuple_lit ((identifier) @property . ":"))
 (tuple_type key: (identifier) @property)
-(tuple_type ((identifier) @property . ":"))
-(tuple_type_for_signature key: (identifier) @property)
+(tuple_type_for_trait key: (identifier) @property)
 
 
 ; Keywords

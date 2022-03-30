@@ -56,8 +56,8 @@ Numbers
 Principals
 =====================================
 
-(define-constant OWNER 'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8Q)
-(define-constant SIBLING_CONTRACT 'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8Q.my-awesome-contract)
+(define-constant OWNER 'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QS)
+(define-constant SIBLING_CONTRACT 'ST1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QS.my-awesome-contract)
 
 ---
 

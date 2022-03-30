@@ -147,7 +147,7 @@ module.exports = grammar({
         $.list_type,
         $.optional_type,
         $.tuple_type,
-        $.tuple_type_for_signature,
+        $.tuple_type_for_trait,
         $.response_type
       ),
 
@@ -157,7 +157,7 @@ module.exports = grammar({
     list_type: ($) => enclosed(seq("list", NUMBER, $.type_name)),
 
     optional_type: ($) => enclosed(seq("optional", $.type_name)),
-    tuple_type_for_signature: ($) =>
+    tuple_type_for_trait: ($) =>
       enclosed(
         seq(
           "tuple",
@@ -172,16 +172,13 @@ module.exports = grammar({
     tuple_type: ($) =>
       seq(
         "{",
-        repeat(
-          seq(
-            field("key", $.identifier),
-            ":",
-            field("value_type", $.type_name),
-            ","
-          )
-        ),
+        optional(repeat(seq($._tuple_type_pair, ","))),
+        $._tuple_type_pair,
         "}"
       ),
+
+    _tuple_type_pair: ($) =>
+      seq(field("key", $.identifier), ":", field("value_type", $.type_name)),
 
     response_type: ($) => enclosed(seq("response", $.type_name, "uint")),
 
@@ -216,14 +213,14 @@ module.exports = grammar({
     uint_lit: (_) => token(/u\d+/),
     bool_lit: (_) => choice("true", "false"),
 
-    standard_principal_lit: (_) => seq("'", /[A-Z0-9]{40}/),
+    standard_principal_lit: (_) => seq("'", /[A-Z0-9]{41}/),
     contract_principal_lit: ($) =>
       prec(4, seq(optional($.standard_principal_lit), ".", $.identifier)),
 
     buffer_lit: (_) => seq("0x", /[a-fA-F0-9]+/),
 
     ascii_string_lit: (_) => seq('"', optional(/[^"\\\n]+|\\\r?\n/), '"'),
-    utf8_string_lit: (_) => seq("u", '"', optional(/[^"\n]+|\\\r?\n/), '"'),
+    utf8_string_lit: (_) => token(seq("u", '"', optional(/[^"\n]+|\\\r?\n/), '"')),
 
     list_lit: ($) =>
       enclosed(seq($.list_lit_token, optional(repeat($._parameter)))),
@@ -235,16 +232,14 @@ module.exports = grammar({
     tuple_lit: ($) =>
       seq(
         "{",
-        repeat(
-          seq(
-            field("key", $.identifier),
-            ":",
-            field("value", $._parameter),
-            optional(",")
-          )
-        ),
+        optional(repeat(seq($._tuple_lit_pair, ","))),
+        $._tuple_lit_pair,
+        optional(','),
         "}"
       ),
+
+    _tuple_lit_pair: ($) =>
+      seq(field("key", $.identifier), ":", field("value", $._parameter)),
 
     response_lit: ($) => enclosed(seq(choice("ok", "err"), $._parameter)),
 
