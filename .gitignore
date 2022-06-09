@@ -1,8 +1,7 @@
 build
 target
-src
 
-node_modules
+node_modules/
 package-lock.json
 
 Cargo.lock
