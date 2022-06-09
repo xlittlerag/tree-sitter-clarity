@@ -33,6 +33,7 @@ module.exports = grammar({
         $.trait_definition,
         $.trait_implementation,
         $.trait_usage,
+        $.token_definition,
         $.constant_definition,
         $.variable_definition,
         $.mapping_definition,
@@ -63,6 +64,15 @@ module.exports = grammar({
           field("trait_name", $.identifier)
         )
       ),
+
+    token_definition: $ =>
+      choice($.fungible_token_definition, $.non_fungible_token_definition),
+
+    fungible_token_definition: ($) =>
+      enclosed(seq("define-fungible-token", $.identifier)),
+
+    non_fungible_token_definition: ($) =>
+      enclosed(seq("define-non-fungible-token", $.identifier, $.type_name)),
 
     constant_definition: ($) =>
       enclosed(seq("define-constant", $.identifier, $._parameter)),

@@ -31,6 +31,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "token_definition"
+        },
+        {
+          "type": "SYMBOL",
           "name": "constant_definition"
         },
         {
@@ -172,6 +176,75 @@
                 "type": "SYMBOL",
                 "name": "identifier"
               }
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "token_definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "fungible_token_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "non_fungible_token_definition"
+        }
+      ]
+    },
+    "fungible_token_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "define-fungible-token"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "non_fungible_token_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "define-non-fungible-token"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "type_name"
             }
           ]
         },

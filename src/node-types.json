@@ -327,6 +327,21 @@
     }
   },
   {
+    "type": "fungible_token_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "global",
     "named": true,
     "fields": {}
@@ -658,6 +673,25 @@
     }
   },
   {
+    "type": "non_fungible_token_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "optional_type",
     "named": true,
     "fields": {},
@@ -882,6 +916,10 @@
           "named": true
         },
         {
+          "type": "token_definition",
+          "named": true
+        },
+        {
           "type": "trait_definition",
           "named": true
         },
@@ -904,6 +942,25 @@
     "type": "standard_principal_lit",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "token_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "fungible_token_definition",
+          "named": true
+        },
+        {
+          "type": "non_fungible_token_definition",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "trait_definition",
@@ -1376,7 +1433,15 @@
     "named": false
   },
   {
+    "type": "define-fungible-token",
+    "named": false
+  },
+  {
     "type": "define-map",
+    "named": false
+  },
+  {
+    "type": "define-non-fungible-token",
     "named": false
   },
   {

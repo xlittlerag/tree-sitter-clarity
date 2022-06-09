@@ -50,6 +50,8 @@
  "define-private"
  "define-public"
  "define-data-var"
+ "define-fungible-token"
+ "define-non-fungible-token"
  "define-constant"
  "define-map"
  "block-height"
