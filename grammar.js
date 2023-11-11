@@ -183,7 +183,7 @@ module.exports = grammar({
       seq(
         "{",
         optional(repeat(seq($._tuple_type_pair, ","))),
-        $._tuple_type_pair,
+        seq($._tuple_type_pair, optional(",")),
         "}"
       ),
 
