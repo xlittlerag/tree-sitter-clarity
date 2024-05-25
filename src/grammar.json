@@ -1598,7 +1598,91 @@
         },
         {
           "type": "STRING",
+          "value": "concat"
+        },
+        {
+          "type": "STRING",
           "value": "contract-call?"
+        },
+        {
+          "type": "STRING",
+          "value": "contract-of"
+        },
+        {
+          "type": "STRING",
+          "value": "default-to"
+        },
+        {
+          "type": "STRING",
+          "value": "if"
+        },
+        {
+          "type": "STRING",
+          "value": "filter"
+        },
+        {
+          "type": "STRING",
+          "value": "fold"
+        },
+        {
+          "type": "STRING",
+          "value": "get"
+        },
+        {
+          "type": "STRING",
+          "value": "is-eq"
+        },
+        {
+          "type": "STRING",
+          "value": "map"
+        },
+        {
+          "type": "STRING",
+          "value": "map-get?"
+        },
+        {
+          "type": "STRING",
+          "value": "map-insert"
+        },
+        {
+          "type": "STRING",
+          "value": "map-set"
+        },
+        {
+          "type": "STRING",
+          "value": "match"
+        },
+        {
+          "type": "STRING",
+          "value": "merge"
+        },
+        {
+          "type": "STRING",
+          "value": "not"
+        },
+        {
+          "type": "STRING",
+          "value": "print"
+        },
+        {
+          "type": "STRING",
+          "value": "try!"
+        },
+        {
+          "type": "STRING",
+          "value": "unwrap!"
+        },
+        {
+          "type": "STRING",
+          "value": "unwrap-panic"
+        },
+        {
+          "type": "STRING",
+          "value": "var-get"
+        },
+        {
+          "type": "STRING",
+          "value": "var-set"
         }
       ]
     },

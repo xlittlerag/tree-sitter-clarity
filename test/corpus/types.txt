@@ -43,10 +43,10 @@ Numbers
         (identifier)
         (native_type)
         (int_lit))
-        (contract_function_call
-          (identifier)
-          (identifier)
-          (int_lit))
+      (basic_native_form
+        (native_identifier)
+        (identifier)
+        (int_lit))
       (variable_definition
         (identifier)
         (native_type)
@@ -99,8 +99,8 @@ Strings
 ---
 
 (source
-      (contract_function_call
-        (identifier)
+      (basic_native_form
+        (native_identifier)
         (identifier)
         (tuple_lit
           (identifier)

@@ -14,7 +14,31 @@ const GLOBALS = [
 const OTHER_NATIVE_FUNCTIONS = [
   "+","-","*","/","mod", // Math
   "<", "<=", ">", ">=", "and", // Boolean
-  "as-contract", "asserts!", "begin", "contract-call?",
+  "as-contract",
+  "asserts!",
+  "begin",
+  "concat",
+  "contract-call?",
+  "contract-of",
+  "default-to",
+  "if",
+  "filter",
+  "fold",
+  "get",
+  "is-eq",
+  "map",
+  "map-get?",
+  "map-insert",
+  "map-set",
+  "match",
+  "merge",
+  "not",
+  "print",
+  "try!",
+  "unwrap!",
+  "unwrap-panic",
+  "var-get",
+  "var-set",
   // ...
 ];
 
