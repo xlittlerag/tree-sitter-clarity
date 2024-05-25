@@ -111,7 +111,7 @@ module.exports = grammar({
       enclosed(
         seq(
           field(
-            "function_name",
+            "operator",
             choice($.identifier, $.arithmetic_function, $.boolean_function)
           ),
           optional(repeat($._parameter))
