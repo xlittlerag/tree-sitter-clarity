@@ -26,9 +26,9 @@ module.exports = grammar({
 
   rules: {
     //  -- [ Contract ] --
-    source: ($) => seq(repeat($._declaration)),
+    source: ($) => seq(repeat($._expression)),
 
-    _declaration: ($) =>
+    _expression: ($) =>
       choice(
         $.trait_definition,
         $.trait_implementation,
