@@ -1,10 +1,13 @@
 const GLOBALS = [
   "block-height",
   "burn-block-height",
-  "tx-sender",
+  "chain_id",
   "contract-caller",
+  "is-in_mainnet",
   "is-in-regtest",
   "stx-liquid-supply",
+  "tx-sender",
+  "tx-sponsor?",
 ];
 
 const NUMBER = /\d+/;
