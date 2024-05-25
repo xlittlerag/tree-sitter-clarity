@@ -72,7 +72,7 @@ module.exports = grammar({
       enclosed(seq("define-fungible-token", $.identifier)),
 
     non_fungible_token_definition: ($) =>
-      enclosed(seq("define-non-fungible-token", $.identifier, $.type_name)),
+      enclosed(seq("define-non-fungible-token", $.identifier, $.native_type)),
 
     constant_definition: ($) =>
       enclosed(seq("define-constant", $.identifier, $._parameter)),
@@ -80,7 +80,7 @@ module.exports = grammar({
     constant: (_) => /[A-Z_][A-Z1-9_]*/, // TODO(): Can we make a rule to identify lowercase constants?
 
     variable_definition: ($) =>
-      enclosed(seq("define-data-var", $.identifier, $.type_name, $._parameter)),
+      enclosed(seq("define-data-var", $.identifier, $.native_type, $._parameter)),
 
     mapping_definition: ($) =>
       prec(
@@ -89,8 +89,8 @@ module.exports = grammar({
           seq(
             "define-map",
             $.identifier,
-            field("key_type", choice($.type_name, $.tuple_type)),
-            field("value_type", choice($.type_name, $.tuple_type))
+            field("key_type", choice($.native_type, $.tuple_type)),
+            field("value_type", choice($.native_type, $.tuple_type))
           )
         )
       ),
@@ -137,15 +137,15 @@ module.exports = grammar({
         seq(
           $.identifier,
           enclosed(optional(repeat($.parameter_type))),
-          $.type_name
+          $.native_type
         )
       ),
 
-    parameter_type: ($) => choice($.type_name, $.trait_type),
+    parameter_type: ($) => choice($.native_type, $.trait_type),
 
     trait_type: ($) => seq("<", $.identifier, ">"),
 
-    type_name: ($) =>
+    native_type: ($) =>
       choice(
         "int",
         "uint",
@@ -164,16 +164,16 @@ module.exports = grammar({
     buffer_type: (_) => enclosed(seq("buff", NUMBER)),
     ascii_string_type: (_) => enclosed(seq("string-ascii", NUMBER)),
     utf8_string_type: (_) => enclosed(seq("string-utf8", NUMBER)),
-    list_type: ($) => enclosed(seq("list", NUMBER, $.type_name)),
+    list_type: ($) => enclosed(seq("list", NUMBER, $.native_type)),
 
-    optional_type: ($) => enclosed(seq("optional", $.type_name)),
+    optional_type: ($) => enclosed(seq("optional", $.native_type)),
     tuple_type_for_trait: ($) =>
       enclosed(
         seq(
           "tuple",
           repeat(
             enclosed(
-              seq(field("key", $.identifier), field("value_type", $.type_name))
+              seq(field("key", $.identifier), field("value_type", $.native_type))
             )
           )
         )
@@ -188,9 +188,9 @@ module.exports = grammar({
       ),
 
     _tuple_type_pair: ($) =>
-      seq(field("key", $.identifier), ":", field("value_type", $.type_name)),
+      seq(field("key", $.identifier), ":", field("value_type", $.native_type)),
 
-    response_type: ($) => enclosed(seq("response", $.type_name, "uint")),
+    response_type: ($) => enclosed(seq("response", $.native_type, "uint")),
 
     _parameter: ($) =>
       choice(
