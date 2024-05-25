@@ -25,9 +25,10 @@
 
 (function_signature (identifier) @function)
 (function_signature_for_trait (identifier) @function)
-(common_expression
+(basic_native_form
+  operator: (native_identifier) @function)
+(contract_function_call
   operator: (identifier) @function)
-[(arithmetic_function) (boolean_function)] @function
 [
  "let"
 ] @function

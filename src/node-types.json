@@ -1,10 +1,5 @@
 [
   {
-    "type": "arithmetic_function",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "ascii_string_lit",
     "named": true,
     "fields": {}
@@ -15,27 +10,7 @@
     "fields": {}
   },
   {
-    "type": "bool_lit",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "boolean_function",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "buffer_lit",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "buffer_type",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "common_expression",
+    "type": "basic_native_form",
     "named": true,
     "fields": {
       "operator": {
@@ -43,15 +18,7 @@
         "required": true,
         "types": [
           {
-            "type": "arithmetic_function",
-            "named": true
-          },
-          {
-            "type": "boolean_function",
-            "named": true
-          },
-          {
-            "type": "identifier",
+            "type": "native_identifier",
             "named": true
           }
         ]
@@ -66,6 +33,10 @@
           "named": true
         },
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -74,11 +45,11 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "constant",
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -137,6 +108,21 @@
     }
   },
   {
+    "type": "bool_lit",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "buffer_lit",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "buffer_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "constant_definition",
     "named": true,
     "fields": {},
@@ -149,6 +135,10 @@
           "named": true
         },
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -157,11 +147,109 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
+          "named": true
+        },
+        {
+          "type": "contract_function_call",
+          "named": true
+        },
+        {
+          "type": "contract_principal_lit",
+          "named": true
+        },
+        {
+          "type": "global",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_lit",
+          "named": true
+        },
+        {
+          "type": "none_lit",
+          "named": true
+        },
+        {
+          "type": "response_lit",
+          "named": true
+        },
+        {
+          "type": "some_lit",
+          "named": true
+        },
+        {
+          "type": "standard_principal_lit",
+          "named": true
+        },
+        {
+          "type": "tuple_lit",
+          "named": true
+        },
+        {
+          "type": "uint_lit",
+          "named": true
+        },
+        {
+          "type": "utf8_string_lit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "contract_function_call",
+    "named": true,
+    "fields": {
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ascii_string_lit",
+          "named": true
+        },
+        {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "buffer_lit",
           "named": true
         },
         {
           "type": "constant",
+          "named": true
+        },
+        {
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -239,25 +327,6 @@
     }
   },
   {
-    "type": "deployment_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "common_expression",
-          "named": true
-        },
-        {
-          "type": "let_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "function_definition",
     "named": true,
     "fields": {},
@@ -266,7 +335,11 @@
       "required": true,
       "types": [
         {
-          "type": "common_expression",
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -369,13 +442,28 @@
   {
     "type": "let_expression",
     "named": true,
-    "fields": {},
+    "fields": {
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "let",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
           "type": "ascii_string_lit",
+          "named": true
+        },
+        {
+          "type": "basic_native_form",
           "named": true
         },
         {
@@ -387,11 +475,11 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "constant",
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -466,6 +554,10 @@
           "named": true
         },
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -474,11 +566,11 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "constant",
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -573,6 +665,10 @@
           "named": true
         },
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -581,11 +677,11 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "constant",
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -686,6 +782,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "native_identifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "native_type",
@@ -796,6 +897,10 @@
           "named": true
         },
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -804,11 +909,11 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "constant",
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -894,6 +999,10 @@
           "named": true
         },
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -902,11 +1011,11 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "constant",
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -973,15 +1082,23 @@
       "required": false,
       "types": [
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "constant_definition",
           "named": true
         },
         {
-          "type": "deployment_expression",
+          "type": "contract_function_call",
           "named": true
         },
         {
           "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "let_expression",
           "named": true
         },
         {
@@ -1147,6 +1264,10 @@
             "named": true
           },
           {
+            "type": "basic_native_form",
+            "named": true
+          },
+          {
             "type": "bool_lit",
             "named": true
           },
@@ -1155,11 +1276,11 @@
             "named": true
           },
           {
-            "type": "common_expression",
+            "type": "constant",
             "named": true
           },
           {
-            "type": "constant",
+            "type": "contract_function_call",
             "named": true
           },
           {
@@ -1288,6 +1409,10 @@
           "named": true
         },
         {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -1296,11 +1421,11 @@
           "named": true
         },
         {
-          "type": "common_expression",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "constant",
+          "type": "contract_function_call",
           "named": true
         },
         {
@@ -1427,6 +1552,22 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "as-contract",
+    "named": false
+  },
+  {
+    "type": "asserts!",
+    "named": false
+  },
+  {
+    "type": "begin",
+    "named": false
+  },
+  {
     "type": "block-height",
     "named": false
   },
@@ -1453,6 +1594,10 @@
   {
     "type": "constant",
     "named": true
+  },
+  {
+    "type": "contract-call?",
+    "named": false
   },
   {
     "type": "contract-caller",
@@ -1528,6 +1673,10 @@
   },
   {
     "type": "list",
+    "named": false
+  },
+  {
+    "type": "mod",
     "named": false
   },
   {

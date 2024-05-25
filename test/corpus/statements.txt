@@ -27,8 +27,8 @@ Function definition
         (let_expression
           (local_binding
             (identifier)
-            (common_expression
-              (arithmetic_function)
+            (basic_native_form
+              (native_identifier)
               (int_lit)
               (int_lit)))
           (local_binding

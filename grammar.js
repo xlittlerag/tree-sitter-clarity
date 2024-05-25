@@ -10,6 +10,14 @@ const GLOBALS = [
   "tx-sponsor?",
 ];
 
+// Non-relevant functions.
+const OTHER_NATIVE_FUNCTIONS = [
+  "+","-","*","/","mod", // Math
+  "<", "<=", ">", ">=", "and", // Boolean
+  "as-contract", "asserts!", "begin", "contract-call?",
+  // ...
+];
+
 const NUMBER = /\d+/;
 
 module.exports = grammar({
@@ -41,13 +49,13 @@ module.exports = grammar({
         $.variable_definition,
         $.mapping_definition,
         $.function_definition,
-        $.deployment_expression,
+        $._function_call,
       ),
 
-    deployment_expression: ($) =>
+    _function_call: ($) =>
       choice(
-        $.common_expression,
-        $.let_expression
+        $._native_function_call,
+        $.contract_function_call,
       ),
 
     trait_definition: ($) =>
@@ -108,16 +116,33 @@ module.exports = grammar({
         seq(
           choice("define-read-only", "define-private", "define-public"),
           $.function_signature,
-          choice($.common_expression, $.let_expression)
+          $._function_call
         )
       ),
 
-    common_expression: ($) =>
+    _native_function_call: ($) =>
+      choice(
+        $.let_expression,
+        $.basic_native_form
+      ),
+
+    basic_native_form: ($) =>
       enclosed(
         seq(
           field(
             "operator",
-            choice($.identifier, $.arithmetic_function, $.boolean_function)
+            $.native_identifier,
+          ),
+          optional(repeat($._parameter))
+        )
+      ),
+
+    contract_function_call: ($) =>
+      enclosed(
+        seq(
+          field(
+            "operator",
+            $.identifier,
           ),
           optional(repeat($._parameter))
         )
@@ -126,9 +151,9 @@ module.exports = grammar({
     let_expression: ($) =>
       enclosed(
         seq(
-          "let",
+          field("operator", "let"),
           enclosed(repeat($.local_binding)),
-          repeat($.common_expression),
+          repeat($._function_call),
           $._parameter
         )
       ),
@@ -204,8 +229,7 @@ module.exports = grammar({
       choice(
         $._literal,
         $.global,
-        $.common_expression,
-        $.let_expression,
+        $._function_call,
         $.constant,
         $.identifier
       ),
@@ -261,10 +285,8 @@ module.exports = grammar({
 
     response_lit: ($) => enclosed(seq(choice("ok", "err"), $._parameter)),
 
+    native_identifier: (_) => choice(...OTHER_NATIVE_FUNCTIONS),
     global: (_) => choice(...GLOBALS),
-
-    arithmetic_function: (_) => choice("+", "-", "/", "*"),
-    boolean_function: (_) => choice("<", "<=", ">", ">="),
 
     identifier: (_) => /[a-zA-Z_][a-zA-Z0-9_?!\-]*/,
 

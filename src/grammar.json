@@ -51,20 +51,20 @@
         },
         {
           "type": "SYMBOL",
-          "name": "deployment_expression"
+          "name": "_function_call"
         }
       ]
     },
-    "deployment_expression": {
+    "_function_call": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "common_expression"
+          "name": "_native_function_call"
         },
         {
           "type": "SYMBOL",
-          "name": "let_expression"
+          "name": "contract_function_call"
         }
       ]
     },
@@ -427,17 +427,8 @@
               "name": "function_signature"
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "common_expression"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "let_expression"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_function_call"
             }
           ]
         },
@@ -447,7 +438,20 @@
         }
       ]
     },
-    "common_expression": {
+    "_native_function_call": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "let_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "basic_native_form"
+        }
+      ]
+    },
+    "basic_native_form": {
       "type": "SEQ",
       "members": [
         {
@@ -461,21 +465,49 @@
               "type": "FIELD",
               "name": "operator",
               "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
+                "type": "SYMBOL",
+                "name": "native_identifier"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "REPEAT",
+                  "content": {
                     "type": "SYMBOL",
-                    "name": "identifier"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "arithmetic_function"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "boolean_function"
+                    "name": "_parameter"
                   }
-                ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "contract_function_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "operator",
+              "content": {
+                "type": "SYMBOL",
+                "name": "identifier"
               }
             },
             {
@@ -512,8 +544,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "let"
+              "type": "FIELD",
+              "name": "operator",
+              "content": {
+                "type": "STRING",
+                "value": "let"
+              }
             },
             {
               "type": "SEQ",
@@ -539,7 +575,7 @@
               "type": "REPEAT",
               "content": {
                 "type": "SYMBOL",
-                "name": "common_expression"
+                "name": "_function_call"
               }
             },
             {
@@ -1099,11 +1135,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "common_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "let_expression"
+          "name": "_function_call"
         },
         {
           "type": "SYMBOL",
@@ -1509,6 +1541,67 @@
         }
       ]
     },
+    "native_identifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "STRING",
+          "value": "mod"
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "STRING",
+          "value": "<="
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        },
+        {
+          "type": "STRING",
+          "value": ">="
+        },
+        {
+          "type": "STRING",
+          "value": "and"
+        },
+        {
+          "type": "STRING",
+          "value": "as-contract"
+        },
+        {
+          "type": "STRING",
+          "value": "asserts!"
+        },
+        {
+          "type": "STRING",
+          "value": "begin"
+        },
+        {
+          "type": "STRING",
+          "value": "contract-call?"
+        }
+      ]
+    },
     "global": {
       "type": "CHOICE",
       "members": [
@@ -1547,48 +1640,6 @@
         {
           "type": "STRING",
           "value": "tx-sponsor?"
-        }
-      ]
-    },
-    "arithmetic_function": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "+"
-        },
-        {
-          "type": "STRING",
-          "value": "-"
-        },
-        {
-          "type": "STRING",
-          "value": "/"
-        },
-        {
-          "type": "STRING",
-          "value": "*"
-        }
-      ]
-    },
-    "boolean_function": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "<"
-        },
-        {
-          "type": "STRING",
-          "value": "<="
-        },
-        {
-          "type": "STRING",
-          "value": ">"
-        },
-        {
-          "type": "STRING",
-          "value": ">="
         }
       ]
     },
