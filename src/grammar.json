@@ -9,12 +9,12 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_declaration"
+            "name": "_expression"
           }
         }
       ]
     },
-    "_declaration": {
+    "_expression": {
       "type": "CHOICE",
       "members": [
         {
@@ -51,11 +51,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "common_statement"
+          "name": "common_expression"
         },
         {
           "type": "SYMBOL",
-          "name": "let_statement"
+          "name": "let_expression"
         }
       ]
     },
@@ -244,7 +244,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_name"
+              "name": "native_type"
             }
           ]
         },
@@ -308,7 +308,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_name"
+              "name": "native_type"
             },
             {
               "type": "SYMBOL",
@@ -351,7 +351,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "type_name"
+                      "name": "native_type"
                     },
                     {
                       "type": "SYMBOL",
@@ -368,7 +368,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "type_name"
+                      "name": "native_type"
                     },
                     {
                       "type": "SYMBOL",
@@ -422,11 +422,11 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "common_statement"
+                  "name": "common_expression"
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "let_statement"
+                  "name": "let_expression"
                 }
               ]
             }
@@ -438,7 +438,7 @@
         }
       ]
     },
-    "common_statement": {
+    "common_expression": {
       "type": "SEQ",
       "members": [
         {
@@ -450,7 +450,7 @@
           "members": [
             {
               "type": "FIELD",
-              "name": "function_name",
+              "name": "operator",
               "content": {
                 "type": "CHOICE",
                 "members": [
@@ -492,7 +492,7 @@
         }
       ]
     },
-    "let_statement": {
+    "let_expression": {
       "type": "SEQ",
       "members": [
         {
@@ -517,7 +517,7 @@
                   "type": "REPEAT",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "let_variable_definition"
+                    "name": "local_binding"
                   }
                 },
                 {
@@ -530,7 +530,7 @@
               "type": "REPEAT",
               "content": {
                 "type": "SYMBOL",
-                "name": "common_statement"
+                "name": "common_expression"
               }
             },
             {
@@ -545,7 +545,7 @@
         }
       ]
     },
-    "let_variable_definition": {
+    "local_binding": {
       "type": "SEQ",
       "members": [
         {
@@ -624,7 +624,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_parameter_type"
+              "name": "parameter_type"
             }
           ]
         },
@@ -662,7 +662,7 @@
                       "type": "REPEAT",
                       "content": {
                         "type": "SYMBOL",
-                        "name": "_parameter_type"
+                        "name": "parameter_type"
                       }
                     },
                     {
@@ -678,7 +678,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_name"
+              "name": "native_type"
             }
           ]
         },
@@ -688,12 +688,12 @@
         }
       ]
     },
-    "_parameter_type": {
+    "parameter_type": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "type_name"
+          "name": "native_type"
         },
         {
           "type": "SYMBOL",
@@ -718,7 +718,7 @@
         }
       ]
     },
-    "type_name": {
+    "native_type": {
       "type": "CHOICE",
       "members": [
         {
@@ -869,7 +869,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_name"
+              "name": "native_type"
             }
           ]
         },
@@ -895,7 +895,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_name"
+              "name": "native_type"
             }
           ]
         },
@@ -944,7 +944,7 @@
                         "name": "value_type",
                         "content": {
                           "type": "SYMBOL",
-                          "name": "type_name"
+                          "name": "native_type"
                         }
                       }
                     ]
@@ -1042,7 +1042,7 @@
           "name": "value_type",
           "content": {
             "type": "SYMBOL",
-            "name": "type_name"
+            "name": "native_type"
           }
         }
       ]
@@ -1063,7 +1063,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_name"
+              "name": "native_type"
             },
             {
               "type": "STRING",
@@ -1090,11 +1090,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "common_statement"
+          "name": "common_expression"
         },
         {
           "type": "SYMBOL",
-          "name": "let_statement"
+          "name": "let_expression"
         },
         {
           "type": "SYMBOL",
@@ -1513,11 +1513,15 @@
         },
         {
           "type": "STRING",
-          "value": "tx-sender"
+          "value": "chain_id"
         },
         {
           "type": "STRING",
           "value": "contract-caller"
+        },
+        {
+          "type": "STRING",
+          "value": "is-in_mainnet"
         },
         {
           "type": "STRING",
@@ -1526,6 +1530,14 @@
         {
           "type": "STRING",
           "value": "stx-liquid-supply"
+        },
+        {
+          "type": "STRING",
+          "value": "tx-sender"
+        },
+        {
+          "type": "STRING",
+          "value": "tx-sponsor?"
         }
       ]
     },
@@ -1608,4 +1620,3 @@
   "inline": [],
   "supertypes": []
 }
-

@@ -35,10 +35,10 @@
     "fields": {}
   },
   {
-    "type": "common_statement",
+    "type": "common_expression",
     "named": true,
     "fields": {
-      "function_name": {
+      "operator": {
         "multiple": false,
         "required": true,
         "types": [
@@ -74,7 +74,7 @@
           "named": true
         },
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -98,7 +98,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         },
         {
@@ -157,7 +157,7 @@
           "named": true
         },
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -181,7 +181,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         },
         {
@@ -247,7 +247,7 @@
       "required": true,
       "types": [
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -255,7 +255,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         }
       ]
@@ -274,11 +274,7 @@
           "named": true
         },
         {
-          "type": "trait_type",
-          "named": true
-        },
-        {
-          "type": "type_name",
+          "type": "parameter_type",
           "named": true
         }
       ]
@@ -316,11 +312,11 @@
           "named": true
         },
         {
-          "type": "trait_type",
+          "type": "native_type",
           "named": true
         },
         {
-          "type": "type_name",
+          "type": "parameter_type",
           "named": true
         }
       ]
@@ -352,7 +348,7 @@
     "fields": {}
   },
   {
-    "type": "let_statement",
+    "type": "let_expression",
     "named": true,
     "fields": {},
     "children": {
@@ -372,7 +368,7 @@
           "named": true
         },
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -396,11 +392,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
-          "named": true
-        },
-        {
-          "type": "let_variable_definition",
+          "type": "let_expression",
           "named": true
         },
         {
@@ -408,86 +400,7 @@
           "named": true
         },
         {
-          "type": "none_lit",
-          "named": true
-        },
-        {
-          "type": "response_lit",
-          "named": true
-        },
-        {
-          "type": "some_lit",
-          "named": true
-        },
-        {
-          "type": "standard_principal_lit",
-          "named": true
-        },
-        {
-          "type": "tuple_lit",
-          "named": true
-        },
-        {
-          "type": "uint_lit",
-          "named": true
-        },
-        {
-          "type": "utf8_string_lit",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "let_variable_definition",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ascii_string_lit",
-          "named": true
-        },
-        {
-          "type": "bool_lit",
-          "named": true
-        },
-        {
-          "type": "buffer_lit",
-          "named": true
-        },
-        {
-          "type": "common_statement",
-          "named": true
-        },
-        {
-          "type": "constant",
-          "named": true
-        },
-        {
-          "type": "contract_principal_lit",
-          "named": true
-        },
-        {
-          "type": "global",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int_lit",
-          "named": true
-        },
-        {
-          "type": "let_statement",
-          "named": true
-        },
-        {
-          "type": "list_lit",
+          "type": "local_binding",
           "named": true
         },
         {
@@ -542,7 +455,7 @@
           "named": true
         },
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -566,7 +479,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         },
         {
@@ -622,7 +535,90 @@
       "required": true,
       "types": [
         {
-          "type": "type_name",
+          "type": "native_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "local_binding",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ascii_string_lit",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "buffer_lit",
+          "named": true
+        },
+        {
+          "type": "common_expression",
+          "named": true
+        },
+        {
+          "type": "constant",
+          "named": true
+        },
+        {
+          "type": "contract_principal_lit",
+          "named": true
+        },
+        {
+          "type": "global",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_lit",
+          "named": true
+        },
+        {
+          "type": "none_lit",
+          "named": true
+        },
+        {
+          "type": "response_lit",
+          "named": true
+        },
+        {
+          "type": "some_lit",
+          "named": true
+        },
+        {
+          "type": "standard_principal_lit",
+          "named": true
+        },
+        {
+          "type": "tuple_lit",
+          "named": true
+        },
+        {
+          "type": "uint_lit",
+          "named": true
+        },
+        {
+          "type": "utf8_string_lit",
           "named": true
         }
       ]
@@ -637,11 +633,11 @@
         "required": true,
         "types": [
           {
-            "type": "tuple_type",
+            "type": "native_type",
             "named": true
           },
           {
-            "type": "type_name",
+            "type": "tuple_type",
             "named": true
           }
         ]
@@ -651,11 +647,11 @@
         "required": true,
         "types": [
           {
-            "type": "tuple_type",
+            "type": "native_type",
             "named": true
           },
           {
-            "type": "type_name",
+            "type": "tuple_type",
             "named": true
           }
         ]
@@ -667,6 +663,49 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "native_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "ascii_string_type",
+          "named": true
+        },
+        {
+          "type": "buffer_type",
+          "named": true
+        },
+        {
+          "type": "list_type",
+          "named": true
+        },
+        {
+          "type": "optional_type",
+          "named": true
+        },
+        {
+          "type": "response_type",
+          "named": true
+        },
+        {
+          "type": "tuple_type",
+          "named": true
+        },
+        {
+          "type": "tuple_type_for_trait",
+          "named": true
+        },
+        {
+          "type": "utf8_string_type",
           "named": true
         }
       ]
@@ -685,7 +724,7 @@
           "named": true
         },
         {
-          "type": "type_name",
+          "type": "native_type",
           "named": true
         }
       ]
@@ -700,7 +739,26 @@
       "required": true,
       "types": [
         {
-          "type": "type_name",
+          "type": "native_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "native_type",
+          "named": true
+        },
+        {
+          "type": "trait_type",
           "named": true
         }
       ]
@@ -727,7 +785,7 @@
           "named": true
         },
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -751,7 +809,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         },
         {
@@ -798,7 +856,7 @@
       "required": true,
       "types": [
         {
-          "type": "type_name",
+          "type": "native_type",
           "named": true
         }
       ]
@@ -825,7 +883,7 @@
           "named": true
         },
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -849,7 +907,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         },
         {
@@ -896,7 +954,7 @@
       "required": false,
       "types": [
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -908,7 +966,7 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         },
         {
@@ -1082,7 +1140,7 @@
             "named": true
           },
           {
-            "type": "common_statement",
+            "type": "common_expression",
             "named": true
           },
           {
@@ -1106,7 +1164,7 @@
             "named": true
           },
           {
-            "type": "let_statement",
+            "type": "let_expression",
             "named": true
           },
           {
@@ -1164,7 +1222,7 @@
         "required": true,
         "types": [
           {
-            "type": "type_name",
+            "type": "native_type",
             "named": true
           }
         ]
@@ -1190,54 +1248,11 @@
         "required": false,
         "types": [
           {
-            "type": "type_name",
+            "type": "native_type",
             "named": true
           }
         ]
       }
-    }
-  },
-  {
-    "type": "type_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "ascii_string_type",
-          "named": true
-        },
-        {
-          "type": "buffer_type",
-          "named": true
-        },
-        {
-          "type": "list_type",
-          "named": true
-        },
-        {
-          "type": "optional_type",
-          "named": true
-        },
-        {
-          "type": "response_type",
-          "named": true
-        },
-        {
-          "type": "tuple_type",
-          "named": true
-        },
-        {
-          "type": "tuple_type_for_trait",
-          "named": true
-        },
-        {
-          "type": "utf8_string_type",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1266,7 +1281,7 @@
           "named": true
         },
         {
-          "type": "common_statement",
+          "type": "common_expression",
           "named": true
         },
         {
@@ -1290,11 +1305,15 @@
           "named": true
         },
         {
-          "type": "let_statement",
+          "type": "let_expression",
           "named": true
         },
         {
           "type": "list_lit",
+          "named": true
+        },
+        {
+          "type": "native_type",
           "named": true
         },
         {
@@ -1315,10 +1334,6 @@
         },
         {
           "type": "tuple_lit",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -1413,6 +1428,10 @@
     "named": false
   },
   {
+    "type": "chain_id",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },
@@ -1485,6 +1504,10 @@
     "named": false
   },
   {
+    "type": "is-in_mainnet",
+    "named": false
+  },
+  {
     "type": "let",
     "named": false
   },
@@ -1538,6 +1561,10 @@
   },
   {
     "type": "tx-sender",
+    "named": false
+  },
+  {
+    "type": "tx-sponsor?",
     "named": false
   },
   {
