@@ -119,29 +119,29 @@ module.exports = grammar({
       enclosed(
         seq(
           "let",
-          enclosed(repeat($.let_variable_definition)),
+          enclosed(repeat($.local_binding)),
           repeat($.common_statement),
           $._parameter
         )
       ),
 
-    let_variable_definition: ($) => enclosed(seq($.identifier, $._parameter)),
+    local_binding: ($) => enclosed(seq($.identifier, $._parameter)),
 
     function_signature: ($) =>
       enclosed(seq($.identifier, optional(repeat($.function_parameter)))),
 
-    function_parameter: ($) => enclosed(seq($.identifier, $._parameter_type)),
+    function_parameter: ($) => enclosed(seq($.identifier, $.parameter_type)),
 
     function_signature_for_trait: ($) =>
       enclosed(
         seq(
           $.identifier,
-          enclosed(optional(repeat($._parameter_type))),
+          enclosed(optional(repeat($.parameter_type))),
           $.type_name
         )
       ),
 
-    _parameter_type: ($) => choice($.type_name, $.trait_type),
+    parameter_type: ($) => choice($.type_name, $.trait_type),
 
     trait_type: ($) => seq("<", $.identifier, ">"),
 
