@@ -41,7 +41,7 @@ module.exports = grammar({
         $.variable_definition,
         $.mapping_definition,
         $.function_definition,
-        $.common_statement,
+        $.common_expression,
         $.let_expression
       ),
 
@@ -103,11 +103,11 @@ module.exports = grammar({
         seq(
           choice("define-read-only", "define-private", "define-public"),
           $.function_signature,
-          choice($.common_statement, $.let_expression)
+          choice($.common_expression, $.let_expression)
         )
       ),
 
-    common_statement: ($) =>
+    common_expression: ($) =>
       enclosed(
         seq(
           field(
@@ -123,7 +123,7 @@ module.exports = grammar({
         seq(
           "let",
           enclosed(repeat($.local_binding)),
-          repeat($.common_statement),
+          repeat($.common_expression),
           $._parameter
         )
       ),
@@ -199,7 +199,7 @@ module.exports = grammar({
       choice(
         $._literal,
         $.global,
-        $.common_statement,
+        $.common_expression,
         $.let_expression,
         $.constant,
         $.identifier
