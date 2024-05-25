@@ -15,7 +15,7 @@
 
 ; Type
 [
-  (type_name)
+  (native_type)
   (trait_type)
 ] @type
 (trait_usage trait_alias: (identifier) @type)
@@ -25,8 +25,8 @@
 
 (function_signature (identifier) @function)
 (function_signature_for_trait (identifier) @function)
-(common_statement
-  function_name: (identifier) @function)
+(common_expression
+  operator: (identifier) @function)
 [(arithmetic_function) (boolean_function)] @function
 [
  "let"

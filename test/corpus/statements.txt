@@ -21,19 +21,20 @@ Function definition
           (identifier)
           (function_parameter
             (identifier)
-            (type_name
-              (ascii_string_type))))
-        (let_statement
-          (let_variable_definition
+            (parameter_type
+              (native_type
+                (ascii_string_type)))))
+        (let_expression
+          (local_binding
             (identifier)
-            (common_statement
+            (common_expression
               (arithmetic_function)
               (int_lit)
               (int_lit)))
-          (let_variable_definition
+          (local_binding
             (identifier)
             (uint_lit))
-          (let_variable_definition
+          (local_binding
             (identifier)
             (global))
           (response_lit
@@ -61,13 +62,17 @@ Trait definition
         (comment)
         (function_signature_for_trait
           (identifier)
-          (type_name)
-          (type_name)
-          (type_name)
-          (type_name
-            (optional_type
-              (type_name
-                (buffer_type))))
-          (type_name
+          (parameter_type
+            (native_type))
+          (parameter_type
+            (native_type))
+          (parameter_type
+            (native_type))
+          (parameter_type
+            (native_type
+              (optional_type
+                (native_type
+                  (buffer_type)))))
+          (native_type
             (response_type
-              (type_name))))))
+              (native_type))))))

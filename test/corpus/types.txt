@@ -20,9 +20,9 @@ Booleans
 (source
       (variable_definition
         (identifier)
-        (type_name
+        (native_type
           (list_type
-            (type_name)))
+            (native_type)))
         (list_lit
           (list_lit_token)
           (bool_lit)
@@ -41,15 +41,15 @@ Numbers
 (source
       (variable_definition
         (identifier)
-        (type_name)
+        (native_type)
         (int_lit))
-      (common_statement
+      (common_expression
         (identifier)
         (identifier)
         (int_lit))
       (variable_definition
         (identifier)
-        (type_name)
+        (native_type)
         (uint_lit)))
 
 =====================================
@@ -86,7 +86,7 @@ Buffers
         (buffer_lit))
       (variable_definition
         (identifier)
-        (type_name
+        (native_type
           (buffer_type))
         (buffer_lit)))
 
@@ -99,7 +99,7 @@ Strings
 ---
 
 (source
-      (common_statement
+      (common_expression
         (identifier)
         (identifier)
         (tuple_lit
