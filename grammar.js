@@ -42,7 +42,7 @@ module.exports = grammar({
         $.mapping_definition,
         $.function_definition,
         $.common_statement,
-        $.let_statement
+        $.let_expression
       ),
 
     trait_definition: ($) =>
@@ -103,7 +103,7 @@ module.exports = grammar({
         seq(
           choice("define-read-only", "define-private", "define-public"),
           $.function_signature,
-          choice($.common_statement, $.let_statement)
+          choice($.common_statement, $.let_expression)
         )
       ),
 
@@ -118,7 +118,7 @@ module.exports = grammar({
         )
       ),
 
-    let_statement: ($) =>
+    let_expression: ($) =>
       enclosed(
         seq(
           "let",
@@ -200,7 +200,7 @@ module.exports = grammar({
         $._literal,
         $.global,
         $.common_statement,
-        $.let_statement,
+        $.let_expression,
         $.constant,
         $.identifier
       ),
