@@ -41,6 +41,11 @@ module.exports = grammar({
         $.variable_definition,
         $.mapping_definition,
         $.function_definition,
+        $.deployment_expression,
+      ),
+
+    deployment_expression: ($) =>
+      choice(
         $.common_expression,
         $.let_expression
       ),

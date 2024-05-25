@@ -51,6 +51,15 @@
         },
         {
           "type": "SYMBOL",
+          "name": "deployment_expression"
+        }
+      ]
+    },
+    "deployment_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
           "name": "common_expression"
         },
         {

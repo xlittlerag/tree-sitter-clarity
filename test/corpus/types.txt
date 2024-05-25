@@ -43,10 +43,11 @@ Numbers
         (identifier)
         (native_type)
         (int_lit))
-      (common_expression
-        (identifier)
-        (identifier)
-        (int_lit))
+      (deployment_expression
+        (common_expression
+          (identifier)
+          (identifier)
+          (int_lit)))
       (variable_definition
         (identifier)
         (native_type)
@@ -99,11 +100,12 @@ Strings
 ---
 
 (source
-      (common_expression
-        (identifier)
-        (identifier)
-        (tuple_lit
-        (identifier)
-          (ascii_string_lit)
+      (deployment_expression
+        (common_expression
           (identifier)
-          (utf8_string_lit))))
+          (identifier)
+          (tuple_lit
+            (identifier)
+            (ascii_string_lit)
+            (identifier)
+            (utf8_string_lit)))))

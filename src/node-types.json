@@ -239,6 +239,25 @@
     }
   },
   {
+    "type": "deployment_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "common_expression",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "function_definition",
     "named": true,
     "fields": {},
@@ -954,19 +973,15 @@
       "required": false,
       "types": [
         {
-          "type": "common_expression",
-          "named": true
-        },
-        {
           "type": "constant_definition",
           "named": true
         },
         {
-          "type": "function_definition",
+          "type": "deployment_expression",
           "named": true
         },
         {
-          "type": "let_expression",
+          "type": "function_definition",
           "named": true
         },
         {
