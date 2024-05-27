@@ -1,5 +1,5 @@
 =====================================
-Function definition
+Public function definition
 =====================================
 
 (define-public (hello-world (name (string-ascii 32)))
@@ -14,31 +14,79 @@ Function definition
 )
 
 ---
-
-(source
+    (source
       (function_definition
-        (function_signature
-          (identifier)
-          (function_parameter
+        (public_function
+          (function_signature
             (identifier)
-            (parameter_type
-              (native_type
-                (ascii_string_type)))))
-        (let_expression
-          (local_binding
+            (function_parameter
+              (identifier)
+              (parameter_type
+                (native_type
+                  (ascii_string_type)))))
+          (let_expression
+            (local_binding
+              (identifier)
+              (basic_native_form
+                (native_identifier)
+                (int_lit)
+                (int_lit)))
+            (local_binding
+              (identifier)
+              (uint_lit))
+            (local_binding
+              (identifier)
+              (global))
+            (response_lit
+              (int_lit))))))
+
+
+
+
+
+=====================================
+Private function definition
+=====================================
+
+(define-private (hello-world (name (string-ascii 32)))
+  (let
+    (
+      (foo (+ 3 1))
+      (bar u5)
+      (user tx-sender)
+    )
+    (ok 1)
+  )
+)
+
+---
+
+    (source
+      (function_definition
+        (private_function
+          (function_signature
             (identifier)
-            (basic_native_form
-              (native_identifier)
-              (int_lit)
-              (int_lit)))
-          (local_binding
-            (identifier)
-            (uint_lit))
-          (local_binding
-            (identifier)
-            (global))
-          (response_lit
-            (int_lit)))))
+            (function_parameter
+              (identifier)
+              (parameter_type
+                (native_type
+                  (ascii_string_type)))))
+          (let_expression
+            (local_binding
+              (identifier)
+              (basic_native_form
+                (native_identifier)
+                (int_lit)
+                (int_lit)))
+            (local_binding
+              (identifier)
+              (uint_lit))
+            (local_binding
+              (identifier)
+              (global))
+            (response_lit
+              (int_lit))))))
+
 
 =====================================
 Trait definition
@@ -55,7 +103,7 @@ Trait definition
 
 ---
 
-(source
+    (source
       (comment)
       (trait_definition
         (identifier)

@@ -135,10 +135,25 @@ module.exports = grammar({
         )
       ),
 
-    function_definition: ($) =>
-      enclosed(
-        seq(
-          choice("define-read-only", "define-private", "define-public"),
+
+    function_definition: ($) => choice($.private_function, $.read_only_function, $.public_function),
+
+    private_function: ($) =>  enclosed(
+        seq("define-private",
+          $.function_signature,
+          $._function_call
+        )
+      ),
+
+    read_only_function: ($) =>  enclosed(
+        seq("define-read-only",
+          $.function_signature,
+          $._function_call
+        )
+      ),
+
+    public_function: ($) =>  enclosed(
+        seq("define-public",
           $.function_signature,
           $._function_call
         )
