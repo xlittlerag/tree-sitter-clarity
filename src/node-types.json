@@ -331,23 +331,19 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "basic_native_form",
+          "type": "private_function",
           "named": true
         },
         {
-          "type": "contract_function_call",
+          "type": "public_function",
           "named": true
         },
         {
-          "type": "function_signature",
-          "named": true
-        },
-        {
-          "type": "let_expression",
+          "type": "read_only_function",
           "named": true
         }
       ]
@@ -879,6 +875,87 @@
         },
         {
           "type": "trait_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "private_function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
+          "type": "contract_function_call",
+          "named": true
+        },
+        {
+          "type": "function_signature",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "public_function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
+          "type": "contract_function_call",
+          "named": true
+        },
+        {
+          "type": "function_signature",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "read_only_function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "basic_native_form",
+          "named": true
+        },
+        {
+          "type": "contract_function_call",
+          "named": true
+        },
+        {
+          "type": "function_signature",
+          "named": true
+        },
+        {
+          "type": "let_expression",
           "named": true
         }
       ]
