@@ -3,9 +3,9 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tree-sitter-clarity"
+name = "ts-clarity"
 description = "Clarity grammar for tree-sitter"
-version = "0.0.1"
+version = "0.0.4"
 keywords = ["incremental", "parsing", "tree-sitter", "clarity"]
 classifiers = [
   "Intended Audience :: Developers",
