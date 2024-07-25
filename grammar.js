@@ -12,8 +12,8 @@ const GLOBALS = [
 
 // Non-relevant functions.
 const OTHER_NATIVE_FUNCTIONS = [
-  "+","-","*","/","mod", // Math
-  "<", "<=", ">", ">=", "and", // Boolean
+  "+","-","*","/","mod","pow", // Math
+  "<","<=",">",">=","and","or", // Boolean
   "as-contract",
   "asserts!",
   "begin",
@@ -116,8 +116,6 @@ module.exports = grammar({
 
     constant_definition: ($) =>
       enclosed(seq("define-constant", $.identifier, $._parameter)),
-
-    constant: (_) => /[A-Z_][A-Z1-9_]*/, // TODO(): Can we make a rule to identify lowercase constants?
 
     variable_definition: ($) =>
       enclosed(seq("define-data-var", $.identifier, $.native_type, $._parameter)),
@@ -269,7 +267,6 @@ module.exports = grammar({
         $._literal,
         $.global,
         $._function_call,
-        $.constant,
         $.identifier
       ),
 
