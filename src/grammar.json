@@ -1650,7 +1650,19 @@
         },
         {
           "type": "STRING",
+          "value": "xor"
+        },
+        {
+          "type": "STRING",
+          "value": "append"
+        },
+        {
+          "type": "STRING",
           "value": "as-contract"
+        },
+        {
+          "type": "STRING",
+          "value": "as-max-len?"
         },
         {
           "type": "STRING",
@@ -1658,7 +1670,51 @@
         },
         {
           "type": "STRING",
+          "value": "at-block"
+        },
+        {
+          "type": "STRING",
           "value": "begin"
+        },
+        {
+          "type": "STRING",
+          "value": "bit-and"
+        },
+        {
+          "type": "STRING",
+          "value": "bit-not"
+        },
+        {
+          "type": "STRING",
+          "value": "bit-or"
+        },
+        {
+          "type": "STRING",
+          "value": "bit-shift-left"
+        },
+        {
+          "type": "STRING",
+          "value": "bit-shift-right"
+        },
+        {
+          "type": "STRING",
+          "value": "bit-xor"
+        },
+        {
+          "type": "STRING",
+          "value": "buff-to-int-be"
+        },
+        {
+          "type": "STRING",
+          "value": "buff-to-int-le"
+        },
+        {
+          "type": "STRING",
+          "value": "buff-to-uint-be"
+        },
+        {
+          "type": "STRING",
+          "value": "buff-to-uint-le"
         },
         {
           "type": "STRING",
@@ -1678,7 +1734,11 @@
         },
         {
           "type": "STRING",
-          "value": "if"
+          "value": "element-at"
+        },
+        {
+          "type": "STRING",
+          "value": "element-at?"
         },
         {
           "type": "STRING",
@@ -1690,7 +1750,63 @@
         },
         {
           "type": "STRING",
+          "value": "from-consensus-buff?"
+        },
+        {
+          "type": "STRING",
+          "value": "ft-burn?"
+        },
+        {
+          "type": "STRING",
+          "value": "ft-mint?"
+        },
+        {
+          "type": "STRING",
+          "value": "ft-transfer?"
+        },
+        {
+          "type": "STRING",
+          "value": "ft-get-supply"
+        },
+        {
+          "type": "STRING",
+          "value": "ft-get-balance"
+        },
+        {
+          "type": "STRING",
           "value": "get"
+        },
+        {
+          "type": "STRING",
+          "value": "get-block-info?"
+        },
+        {
+          "type": "STRING",
+          "value": "get-burn-block-info?"
+        },
+        {
+          "type": "STRING",
+          "value": "hash160"
+        },
+        {
+          "type": "STRING",
+          "value": "if"
+        },
+        {
+          "type": "STRING",
+          "value": "index-of"
+        },
+        {
+          "type": "STRING",
+          "value": "index-of?"
+        },
+        {
+          "type": "STRING",
+          "value": "int-to-ascii"
+        },
+        {
+          "type": "STRING",
+          "value": "int-to-utf8"
         },
         {
           "type": "STRING",
@@ -1698,7 +1814,43 @@
         },
         {
           "type": "STRING",
+          "value": "is-err"
+        },
+        {
+          "type": "STRING",
+          "value": "is-none"
+        },
+        {
+          "type": "STRING",
+          "value": "is-ok"
+        },
+        {
+          "type": "STRING",
+          "value": "is-some"
+        },
+        {
+          "type": "STRING",
+          "value": "is-standard"
+        },
+        {
+          "type": "STRING",
+          "value": "keccak256"
+        },
+        {
+          "type": "STRING",
+          "value": "len"
+        },
+        {
+          "type": "STRING",
+          "value": "log2"
+        },
+        {
+          "type": "STRING",
           "value": "map"
+        },
+        {
+          "type": "STRING",
+          "value": "map-delete"
         },
         {
           "type": "STRING",
@@ -1722,11 +1874,111 @@
         },
         {
           "type": "STRING",
+          "value": "nft-burn?"
+        },
+        {
+          "type": "STRING",
+          "value": "nft-mint?"
+        },
+        {
+          "type": "STRING",
+          "value": "nft-get-owner?"
+        },
+        {
+          "type": "STRING",
+          "value": "nft-transfer?"
+        },
+        {
+          "type": "STRING",
           "value": "not"
         },
         {
           "type": "STRING",
+          "value": "principal-construct?"
+        },
+        {
+          "type": "STRING",
+          "value": "principal-destruct?"
+        },
+        {
+          "type": "STRING",
+          "value": "principal-of?"
+        },
+        {
+          "type": "STRING",
           "value": "print"
+        },
+        {
+          "type": "STRING",
+          "value": "replace-at?"
+        },
+        {
+          "type": "STRING",
+          "value": "secp256k1-recover?"
+        },
+        {
+          "type": "STRING",
+          "value": "secp256k1-verify"
+        },
+        {
+          "type": "STRING",
+          "value": "sha256"
+        },
+        {
+          "type": "STRING",
+          "value": "sha512"
+        },
+        {
+          "type": "STRING",
+          "value": "sha512/256"
+        },
+        {
+          "type": "STRING",
+          "value": "slice?"
+        },
+        {
+          "type": "STRING",
+          "value": "sqrti"
+        },
+        {
+          "type": "STRING",
+          "value": "string-to-int?"
+        },
+        {
+          "type": "STRING",
+          "value": "string-to-uint?"
+        },
+        {
+          "type": "STRING",
+          "value": "stx-account"
+        },
+        {
+          "type": "STRING",
+          "value": "stx-burn?"
+        },
+        {
+          "type": "STRING",
+          "value": "stx-get-balance"
+        },
+        {
+          "type": "STRING",
+          "value": "stx-transfer-memo?"
+        },
+        {
+          "type": "STRING",
+          "value": "stx-transfer?"
+        },
+        {
+          "type": "STRING",
+          "value": "to-consensus-buff?"
+        },
+        {
+          "type": "STRING",
+          "value": "to-int"
+        },
+        {
+          "type": "STRING",
+          "value": "to-uint"
         },
         {
           "type": "STRING",
@@ -1735,6 +1987,14 @@
         {
           "type": "STRING",
           "value": "unwrap!"
+        },
+        {
+          "type": "STRING",
+          "value": "unwrap-err!"
+        },
+        {
+          "type": "STRING",
+          "value": "unwrap-err-panic"
         },
         {
           "type": "STRING",
@@ -1788,6 +2048,50 @@
         {
           "type": "STRING",
           "value": "tx-sponsor?"
+        },
+        {
+          "type": "STRING",
+          "value": "block-reward"
+        },
+        {
+          "type": "STRING",
+          "value": "burnchain-header-hash"
+        },
+        {
+          "type": "STRING",
+          "value": "id-header-hash"
+        },
+        {
+          "type": "STRING",
+          "value": "header-hash"
+        },
+        {
+          "type": "STRING",
+          "value": "miner-address"
+        },
+        {
+          "type": "STRING",
+          "value": "miner-spend-total"
+        },
+        {
+          "type": "STRING",
+          "value": "miner-spend-winner"
+        },
+        {
+          "type": "STRING",
+          "value": "time"
+        },
+        {
+          "type": "STRING",
+          "value": "vrf-seed"
+        },
+        {
+          "type": "STRING",
+          "value": "header-hash"
+        },
+        {
+          "type": "STRING",
+          "value": "pox-addrs"
         }
       ]
     },
