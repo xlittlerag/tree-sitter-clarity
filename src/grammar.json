@@ -293,10 +293,6 @@
         }
       ]
     },
-    "constant": {
-      "type": "PATTERN",
-      "value": "[A-Z_][A-Z1-9_]*"
-    },
     "variable_definition": {
       "type": "SEQ",
       "members": [
@@ -1203,10 +1199,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "constant"
-        },
-        {
-          "type": "SYMBOL",
           "name": "identifier"
         }
       ]
@@ -1630,6 +1622,10 @@
         },
         {
           "type": "STRING",
+          "value": "pow"
+        },
+        {
+          "type": "STRING",
           "value": "<"
         },
         {
@@ -1647,6 +1643,10 @@
         {
           "type": "STRING",
           "value": "and"
+        },
+        {
+          "type": "STRING",
+          "value": "or"
         },
         {
           "type": "STRING",
