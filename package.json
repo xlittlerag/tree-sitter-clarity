@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-clarity",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Tree sitter parser for Clarity",
   "main": "bindings/node",
   "types": "bindings/node",

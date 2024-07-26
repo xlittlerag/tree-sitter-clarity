@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+bindings/python/tree_sitter_clarity/__init__.py
+bindings/python/tree_sitter_clarity/__init__.pyi
+bindings/python/tree_sitter_clarity/binding.c
+bindings/python/tree_sitter_clarity/py.typed
+bindings/python/ts_clarity.egg-info/PKG-INFO
+bindings/python/ts_clarity.egg-info/SOURCES.txt
+bindings/python/ts_clarity.egg-info/dependency_links.txt
+bindings/python/ts_clarity.egg-info/not-zip-safe
+bindings/python/ts_clarity.egg-info/requires.txt
+bindings/python/ts_clarity.egg-info/top_level.txt
+src/parser.c
