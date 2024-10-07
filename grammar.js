@@ -25,32 +25,32 @@ const GLOBALS = [
 
 // Non-relevant functions.
 const OTHER_NATIVE_FUNCTIONS = [
-  "+","-","*","/","mod","pow", // Math
-  "<","<=",">",">=","and","or","xor", // Boolean
+  "+", "-", "*", "/", "mod", "pow", // Math
+  "<", "<=", ">", ">=", "and", "or", "xor", // Boolean
   "append",
   "as-contract",
   "as-max-len?",
   "asserts!",
   "at-block",
   "begin",
-  "bit-and","bit-not","bit-or","bit-shift-left","bit-shift-right","bit-xor",
-  "buff-to-int-be","buff-to-int-le","buff-to-uint-be","buff-to-uint-le",
+  "bit-and", "bit-not", "bit-or", "bit-shift-left", "bit-shift-right", "bit-xor",
+  "buff-to-int-be", "buff-to-int-le", "buff-to-uint-be", "buff-to-uint-le",
   "concat",
   "contract-call?",
   "contract-of",
   "default-to",
-  "element-at","element-at?",
+  "element-at", "element-at?",
   "filter",
   "fold",
   "from-consensus-buff?",
-  "ft-burn?","ft-mint?","ft-transfer?","ft-get-supply","ft-get-balance",
+  "ft-burn?", "ft-mint?", "ft-transfer?", "ft-get-supply", "ft-get-balance",
   "get",
-  "get-block-info?","get-burn-block-info?",
+  "get-block-info?", "get-burn-block-info?",
   "hash160",
   "if",
-  "index-of","index-of?",
-  "int-to-ascii","int-to-utf8",
-  "is-eq","is-err","is-none","is-ok","is-some","is-standard",
+  "index-of", "index-of?",
+  "int-to-ascii", "int-to-utf8",
+  "is-eq", "is-err", "is-none", "is-ok", "is-some", "is-standard",
   "keccak256",
   "len",
   "log2",
@@ -58,9 +58,9 @@ const OTHER_NATIVE_FUNCTIONS = [
   "map-delete", "map-get?", "map-insert", "map-set",
   "match",
   "merge",
-  "nft-burn?","nft-mint?","nft-get-owner?","nft-transfer?",
+  "nft-burn?", "nft-mint?", "nft-get-owner?", "nft-transfer?",
   "not",
-  "principal-construct?","principal-destruct?","principal-of?",
+  "principal-construct?", "principal-destruct?", "principal-of?",
   "print",
   "replace-at?",
   "secp256k1-recover?", "secp256k1-verify",
@@ -124,7 +124,14 @@ module.exports = grammar({
       ),
 
     trait_implementation: ($) =>
-      enclosed(seq("impl-trait", $.contract_principal_lit, ".", $.identifier)),
+      enclosed(
+        seq(
+          "impl-trait",
+          $.contract_principal_lit,
+          ".",
+          field("trait_name", $.identifier)
+        )
+      ),
 
     trait_usage: ($) =>
       enclosed(
@@ -168,26 +175,26 @@ module.exports = grammar({
 
     function_definition: ($) => choice($.private_function, $.read_only_function, $.public_function),
 
-    private_function: ($) =>  enclosed(
-        seq("define-private",
-          $.function_signature,
-          $._function_call
-        )
-      ),
+    private_function: ($) => enclosed(
+      seq("define-private",
+        $.function_signature,
+        $._function_call
+      )
+    ),
 
-    read_only_function: ($) =>  enclosed(
-        seq("define-read-only",
-          $.function_signature,
-          $._function_call
-        )
-      ),
+    read_only_function: ($) => enclosed(
+      seq("define-read-only",
+        $.function_signature,
+        $._function_call
+      )
+    ),
 
-    public_function: ($) =>  enclosed(
-        seq("define-public",
-          $.function_signature,
-          $._function_call
-        )
-      ),
+    public_function: ($) => enclosed(
+      seq("define-public",
+        $.function_signature,
+        $._function_call
+      )
+    ),
 
     _native_function_call: ($) =>
       choice(
