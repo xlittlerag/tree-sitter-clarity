@@ -273,7 +273,7 @@ module.exports = grammar({
     buffer_type: (_) => enclosed(seq("buff", NUMBER)),
     ascii_string_type: (_) => enclosed(seq("string-ascii", NUMBER)),
     utf8_string_type: (_) => enclosed(seq("string-utf8", NUMBER)),
-    list_type: ($) => enclosed(seq("list", NUMBER, $.native_type)),
+    list_type: ($) => enclosed(seq("list", NUMBER, $.parameter_type)),
 
     optional_type: ($) => enclosed(seq("optional", $.native_type)),
     tuple_type_for_trait: ($) =>

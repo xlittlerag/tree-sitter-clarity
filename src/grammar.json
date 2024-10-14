@@ -137,8 +137,12 @@
               "value": "."
             },
             {
-              "type": "SYMBOL",
-              "name": "identifier"
+              "type": "FIELD",
+              "name": "trait_name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
             }
           ]
         },
@@ -974,7 +978,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "native_type"
+              "name": "parameter_type"
             }
           ]
         },

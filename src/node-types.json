@@ -622,7 +622,7 @@
       "required": true,
       "types": [
         {
-          "type": "native_type",
+          "type": "parameter_type",
           "named": true
         }
       ]
@@ -1219,17 +1219,24 @@
   {
     "type": "trait_implementation",
     "named": true,
-    "fields": {},
+    "fields": {
+      "trait_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "contract_principal_lit",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         }
       ]
