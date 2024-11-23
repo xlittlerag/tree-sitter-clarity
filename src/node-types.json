@@ -2096,6 +2096,10 @@
     "named": false
   },
   {
+    "type": "tenure-height",
+    "named": false
+  },
+  {
     "type": "time",
     "named": false
   },

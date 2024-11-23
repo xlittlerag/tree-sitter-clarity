@@ -3,6 +3,7 @@ target
 
 node_modules/
 package-lock.json
+pnpm-lock.yaml
 
 Cargo.lock
 
@@ -12,3 +13,4 @@ clarity.so
 
 dist/
 bindings/
+

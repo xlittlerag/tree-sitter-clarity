@@ -2047,6 +2047,10 @@
         },
         {
           "type": "STRING",
+          "value": "tenure-height"
+        },
+        {
+          "type": "STRING",
           "value": "tx-sender"
         },
         {

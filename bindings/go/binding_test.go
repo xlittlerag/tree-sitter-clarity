@@ -3,8 +3,8 @@ package tree_sitter_clarity_test
 import (
 	"testing"
 
-	tree_sitter "github.com/smacker/go-tree-sitter"
-	"github.com/tree-sitter/tree-sitter-clarity"
+	tree_sitter "github.com/tree-sitter/go-tree-sitter"
+	tree_sitter_clarity "github.com/tree-sitter/tree-sitter-clarity/bindings/go"
 )
 
 func TestCanLoadGrammar(t *testing.T) {

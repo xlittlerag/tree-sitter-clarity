@@ -6,6 +6,7 @@ const GLOBALS = [
   "is-in_mainnet",
   "is-in-regtest",
   "stx-liquid-supply",
+  "tenure-height",
   "tx-sender",
   "tx-sponsor?",
   // Block info
