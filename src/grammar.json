@@ -2027,7 +2027,7 @@
         },
         {
           "type": "STRING",
-          "value": "chain_id"
+          "value": "chain-id"
         },
         {
           "type": "STRING",
@@ -2040,6 +2040,10 @@
         {
           "type": "STRING",
           "value": "is-in-regtest"
+        },
+        {
+          "type": "STRING",
+          "value": "stacks-block-height"
         },
         {
           "type": "STRING",

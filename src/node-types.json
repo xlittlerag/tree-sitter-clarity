@@ -1688,7 +1688,7 @@
     "named": false
   },
   {
-    "type": "chain_id",
+    "type": "chain-id",
     "named": false
   },
   {
@@ -2053,6 +2053,10 @@
   },
   {
     "type": "sqrti",
+    "named": false
+  },
+  {
+    "type": "stacks-block-height",
     "named": false
   },
   {

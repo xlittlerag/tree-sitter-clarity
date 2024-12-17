@@ -1,10 +1,11 @@
 const GLOBALS = [
   "block-height",
   "burn-block-height",
-  "chain_id",
+  "chain-id",
   "contract-caller",
   "is-in_mainnet",
   "is-in-regtest",
+  "stacks-block-height",
   "stx-liquid-supply",
   "tenure-height",
   "tx-sender",
