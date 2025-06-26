@@ -123,4 +123,34 @@ Trait definition
                   (buffer_type)))))
           (native_type
             (response_type
+  	      (native_type)
               (native_type))))))
+
+
+=====================================
+Trait within tuple parameter
+=====================================
+
+(define-private (foo (bar (response { baz: <luu> } principal)))
+  true)
+
+---
+
+(source
+  (function_definition
+    (private_function
+      (function_signature
+	(identifier)
+	(function_parameter
+	  (identifier)
+	  (parameter_type
+	    (native_type
+	      (response_type
+	      	(native_type
+		  (tuple_type
+		    (identifier)
+		    (parameter_type
+		      (trait_type
+		        (identifier)))))
+		(native_type))))))
+      (bool_lit))))

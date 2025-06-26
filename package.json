@@ -38,17 +38,5 @@
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.clar",
-      "file-types": [
-        "clar"
-      ],
-      "highlights": [
-        "queries/highlights.scm"
-      ],
-      "injection-regex": "^(clar|clarity)$"
-    }
-  ]
+  }
 }

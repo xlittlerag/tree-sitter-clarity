@@ -27,53 +27,108 @@ const GLOBALS = [
 
 // Non-relevant functions.
 const OTHER_NATIVE_FUNCTIONS = [
-  "+", "-", "*", "/", "mod", "pow", // Math
-  "<", "<=", ">", ">=", "and", "or", "xor", // Boolean
+  "+",
+  "-",
+  "*",
+  "/",
+  "mod",
+  "pow", // Math
+  "<",
+  "<=",
+  ">",
+  ">=",
+  "and",
+  "or",
+  "xor", // Boolean
   "append",
   "as-contract",
   "as-max-len?",
   "asserts!",
   "at-block",
   "begin",
-  "bit-and", "bit-not", "bit-or", "bit-shift-left", "bit-shift-right", "bit-xor",
-  "buff-to-int-be", "buff-to-int-le", "buff-to-uint-be", "buff-to-uint-le",
+  "bit-and",
+  "bit-not",
+  "bit-or",
+  "bit-shift-left",
+  "bit-shift-right",
+  "bit-xor",
+  "buff-to-int-be",
+  "buff-to-int-le",
+  "buff-to-uint-be",
+  "buff-to-uint-le",
   "concat",
   "contract-call?",
   "contract-of",
   "default-to",
-  "element-at", "element-at?",
+  "element-at",
+  "element-at?",
   "filter",
   "fold",
   "from-consensus-buff?",
-  "ft-burn?", "ft-mint?", "ft-transfer?", "ft-get-supply", "ft-get-balance",
+  "ft-burn?",
+  "ft-mint?",
+  "ft-transfer?",
+  "ft-get-supply",
+  "ft-get-balance",
   "get",
-  "get-block-info?", "get-burn-block-info?",
+  "get-block-info?",
+  "get-burn-block-info?",
   "hash160",
   "if",
-  "index-of", "index-of?",
-  "int-to-ascii", "int-to-utf8",
-  "is-eq", "is-err", "is-none", "is-ok", "is-some", "is-standard",
+  "index-of",
+  "index-of?",
+  "int-to-ascii",
+  "int-to-utf8",
+  "is-eq",
+  "is-err",
+  "is-none",
+  "is-ok",
+  "is-some",
+  "is-standard",
   "keccak256",
   "len",
   "log2",
   "map",
-  "map-delete", "map-get?", "map-insert", "map-set",
+  "map-delete",
+  "map-get?",
+  "map-insert",
+  "map-set",
   "match",
   "merge",
-  "nft-burn?", "nft-mint?", "nft-get-owner?", "nft-transfer?",
+  "nft-burn?",
+  "nft-mint?",
+  "nft-get-owner?",
+  "nft-transfer?",
   "not",
-  "principal-construct?", "principal-destruct?", "principal-of?",
+  "principal-construct?",
+  "principal-destruct?",
+  "principal-of?",
   "print",
   "replace-at?",
-  "secp256k1-recover?", "secp256k1-verify",
-  "sha256", "sha512", "sha512/256",
+  "secp256k1-recover?",
+  "secp256k1-verify",
+  "sha256",
+  "sha512",
+  "sha512/256",
   "slice?",
   "sqrti",
-  "string-to-int?", "string-to-uint?",
-  "stx-account", "stx-burn?", "stx-get-balance", "stx-transfer-memo?", "stx-transfer?",
-  "to-consensus-buff?", "to-int", "to-uint",
-  "try!", "unwrap!", "unwrap-err!", "unwrap-err-panic", "unwrap-panic",
-  "var-get", "var-set",
+  "string-to-int?",
+  "string-to-uint?",
+  "stx-account",
+  "stx-burn?",
+  "stx-get-balance",
+  "stx-transfer-memo?",
+  "stx-transfer?",
+  "to-consensus-buff?",
+  "to-int",
+  "to-uint",
+  "try!",
+  "unwrap!",
+  "unwrap-err!",
+  "unwrap-err-panic",
+  "unwrap-panic",
+  "var-get",
+  "var-set",
 ];
 
 const NUMBER = /\d+/;
@@ -121,8 +176,8 @@ module.exports = grammar({
         seq(
           "define-trait",
           $.identifier,
-          enclosed(repeat($.function_signature_for_trait))
-        )
+          enclosed(repeat($.function_signature_for_trait)),
+        ),
       ),
 
     trait_implementation: ($) =>
@@ -131,8 +186,8 @@ module.exports = grammar({
           "impl-trait",
           $.contract_principal_lit,
           ".",
-          field("trait_name", $.identifier)
-        )
+          field("trait_name", $.identifier),
+        ),
       ),
 
     trait_usage: ($) =>
@@ -142,11 +197,11 @@ module.exports = grammar({
           field("trait_alias", $.identifier),
           $.contract_principal_lit,
           ".",
-          field("trait_name", $.identifier)
-        )
+          field("trait_name", $.identifier),
+        ),
       ),
 
-    token_definition: $ =>
+    token_definition: ($) =>
       choice($.fungible_token_definition, $.non_fungible_token_definition),
 
     fungible_token_definition: ($) =>
@@ -159,7 +214,9 @@ module.exports = grammar({
       enclosed(seq("define-constant", $.identifier, $._parameter)),
 
     variable_definition: ($) =>
-      enclosed(seq("define-data-var", $.identifier, $.native_type, $._parameter)),
+      enclosed(
+        seq("define-data-var", $.identifier, $.native_type, $._parameter),
+      ),
 
     mapping_definition: ($) =>
       prec(
@@ -169,39 +226,45 @@ module.exports = grammar({
             "define-map",
             $.identifier,
             field("key_type", choice($.native_type, $.tuple_type)),
-            field("value_type", choice($.native_type, $.tuple_type))
-          )
-        )
+            field("value_type", choice($.native_type, $.tuple_type)),
+          ),
+        ),
       ),
 
+    function_definition: ($) =>
+      choice($.private_function, $.read_only_function, $.public_function),
 
-    function_definition: ($) => choice($.private_function, $.read_only_function, $.public_function),
+    private_function: ($) =>
+      enclosed(
+        seq(
+          "define-private",
+          $.function_signature,
+          choice($._function_call, $._literal),
+        ),
+      ),
 
-    private_function: ($) => enclosed(
-      seq("define-private",
-        $.function_signature,
-        $._function_call
-      )
-    ),
+    read_only_function: ($) =>
+      enclosed(
+        seq(
+          "define-read-only",
+          $.function_signature,
+          choice($._function_call, $._literal),
+        ),
+      ),
 
-    read_only_function: ($) => enclosed(
-      seq("define-read-only",
-        $.function_signature,
-        $._function_call
-      )
-    ),
-
-    public_function: ($) => enclosed(
-      seq("define-public",
-        $.function_signature,
-        $._function_call
-      )
-    ),
+    public_function: ($) =>
+      enclosed(
+        seq(
+          "define-public",
+          $.function_signature,
+          choice($._function_call, $.response_lit),
+        ),
+      ),
 
     _native_function_call: ($) =>
       choice(
         $.let_expression,
-        $.basic_native_form
+        $.basic_native_form,
       ),
 
     basic_native_form: ($) =>
@@ -211,8 +274,8 @@ module.exports = grammar({
             "operator",
             $.native_identifier,
           ),
-          optional(repeat($._parameter))
-        )
+          optional(repeat($._parameter)),
+        ),
       ),
 
     contract_function_call: ($) =>
@@ -222,8 +285,8 @@ module.exports = grammar({
             "operator",
             $.identifier,
           ),
-          optional(repeat($._parameter))
-        )
+          optional(repeat($._parameter)),
+        ),
       ),
 
     let_expression: ($) =>
@@ -232,8 +295,8 @@ module.exports = grammar({
           field("operator", "let"),
           enclosed(repeat($.local_binding)),
           repeat($._function_call),
-          $._parameter
-        )
+          $._parameter,
+        ),
       ),
 
     local_binding: ($) => enclosed(seq($.identifier, $._parameter)),
@@ -248,8 +311,8 @@ module.exports = grammar({
         seq(
           $.identifier,
           enclosed(optional(repeat($.parameter_type))),
-          $.native_type
-        )
+          $.native_type,
+        ),
       ),
 
     parameter_type: ($) => choice($.native_type, $.trait_type),
@@ -269,7 +332,7 @@ module.exports = grammar({
         $.optional_type,
         $.tuple_type,
         $.tuple_type_for_trait,
-        $.response_type
+        $.response_type,
       ),
 
     buffer_type: (_) => enclosed(seq("buff", NUMBER)),
@@ -284,10 +347,13 @@ module.exports = grammar({
           "tuple",
           repeat(
             enclosed(
-              seq(field("key", $.identifier), field("value_type", $.native_type))
-            )
-          )
-        )
+              seq(
+                field("key", $.identifier),
+                field("value_type", choice($.native_type, $.trait_type)),
+              ),
+            ),
+          ),
+        ),
       ),
 
     tuple_type: ($) =>
@@ -295,20 +361,25 @@ module.exports = grammar({
         "{",
         optional(repeat(seq($._tuple_type_pair, ","))),
         seq($._tuple_type_pair, optional(",")),
-        "}"
+        "}",
       ),
 
     _tuple_type_pair: ($) =>
-      seq(field("key", $.identifier), ":", field("value_type", $.native_type)),
+      seq(
+        field("key", $.identifier),
+        ":",
+        field("value_type", $.parameter_type),
+      ),
 
-    response_type: ($) => enclosed(seq("response", $.native_type, "uint")),
+    response_type: ($) =>
+      enclosed(seq("response", $.native_type, $.native_type)),
 
     _parameter: ($) =>
       choice(
         $._literal,
         $.global,
         $._function_call,
-        $.identifier
+        $.identifier,
       ),
 
     _literal: ($) =>
@@ -325,21 +396,23 @@ module.exports = grammar({
         $.tuple_lit,
         $.none_lit,
         $.some_lit,
-        $.response_lit
+        $.response_lit,
       ),
 
     int_lit: (_) => seq(optional("-"), NUMBER),
     uint_lit: (_) => token(/u\d+/),
     bool_lit: (_) => choice("true", "false"),
 
-    standard_principal_lit: (_) => seq("'", /[A-Z0-9]{41}/),
+    standard_principal_lit: (_) =>
+      seq("'", choice(/[A-Z0-9]{41}/, /[A-Z0-9]{40}/)),
     contract_principal_lit: ($) =>
       prec(4, seq(optional($.standard_principal_lit), ".", $.identifier)),
 
     buffer_lit: (_) => seq("0x", /[a-fA-F0-9]+/),
 
     ascii_string_lit: (_) => seq('"', optional(/[^"\\\n]+|\\\r?\n/), '"'),
-    utf8_string_lit: (_) => token(seq("u", '"', optional(/[^"\n]+|\\\r?\n/), '"')),
+    utf8_string_lit: (_) =>
+      token(seq("u", '"', optional(/[^"\n]+|\\\r?\n/), '"')),
 
     list_lit: ($) =>
       enclosed(seq($.list_lit_token, optional(repeat($._parameter)))),
@@ -353,8 +426,8 @@ module.exports = grammar({
         "{",
         optional(repeat(seq($._tuple_lit_pair, ","))),
         $._tuple_lit_pair,
-        optional(','),
-        "}"
+        optional(","),
+        "}",
       ),
 
     _tuple_lit_pair: ($) =>

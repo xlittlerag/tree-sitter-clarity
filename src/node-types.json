@@ -865,7 +865,19 @@
       "required": true,
       "types": [
         {
+          "type": "ascii_string_lit",
+          "named": true
+        },
+        {
           "type": "basic_native_form",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "buffer_lit",
           "named": true
         },
         {
@@ -873,11 +885,51 @@
           "named": true
         },
         {
+          "type": "contract_principal_lit",
+          "named": true
+        },
+        {
           "type": "function_signature",
           "named": true
         },
         {
+          "type": "int_lit",
+          "named": true
+        },
+        {
           "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_lit",
+          "named": true
+        },
+        {
+          "type": "none_lit",
+          "named": true
+        },
+        {
+          "type": "response_lit",
+          "named": true
+        },
+        {
+          "type": "some_lit",
+          "named": true
+        },
+        {
+          "type": "standard_principal_lit",
+          "named": true
+        },
+        {
+          "type": "tuple_lit",
+          "named": true
+        },
+        {
+          "type": "uint_lit",
+          "named": true
+        },
+        {
+          "type": "utf8_string_lit",
           "named": true
         }
       ]
@@ -906,6 +958,10 @@
         {
           "type": "let_expression",
           "named": true
+        },
+        {
+          "type": "response_lit",
+          "named": true
         }
       ]
     }
@@ -919,7 +975,19 @@
       "required": true,
       "types": [
         {
+          "type": "ascii_string_lit",
+          "named": true
+        },
+        {
           "type": "basic_native_form",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "buffer_lit",
           "named": true
         },
         {
@@ -927,11 +995,51 @@
           "named": true
         },
         {
+          "type": "contract_principal_lit",
+          "named": true
+        },
+        {
           "type": "function_signature",
           "named": true
         },
         {
+          "type": "int_lit",
+          "named": true
+        },
+        {
           "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_lit",
+          "named": true
+        },
+        {
+          "type": "none_lit",
+          "named": true
+        },
+        {
+          "type": "response_lit",
+          "named": true
+        },
+        {
+          "type": "some_lit",
+          "named": true
+        },
+        {
+          "type": "standard_principal_lit",
+          "named": true
+        },
+        {
+          "type": "tuple_lit",
+          "named": true
+        },
+        {
+          "type": "uint_lit",
+          "named": true
+        },
+        {
+          "type": "utf8_string_lit",
           "named": true
         }
       ]
@@ -1025,7 +1133,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -1121,6 +1229,7 @@
   {
     "type": "source",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -1406,7 +1515,7 @@
         "required": true,
         "types": [
           {
-            "type": "native_type",
+            "type": "parameter_type",
             "named": true
           }
         ]
@@ -1433,6 +1542,10 @@
         "types": [
           {
             "type": "native_type",
+            "named": true
+          },
+          {
+            "type": "trait_type",
             "named": true
           }
         ]
@@ -1693,7 +1806,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "concat",

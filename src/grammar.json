@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "clarity",
   "word": "identifier",
   "rules": {
@@ -431,8 +432,17 @@
               "name": "function_signature"
             },
             {
-              "type": "SYMBOL",
-              "name": "_function_call"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_function_call"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_literal"
+                }
+              ]
             }
           ]
         },
@@ -461,8 +471,17 @@
               "name": "function_signature"
             },
             {
-              "type": "SYMBOL",
-              "name": "_function_call"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_function_call"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_literal"
+                }
+              ]
             }
           ]
         },
@@ -491,8 +510,17 @@
               "name": "function_signature"
             },
             {
-              "type": "SYMBOL",
-              "name": "_function_call"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_function_call"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "response_lit"
+                }
+              ]
             }
           ]
         },
@@ -1052,8 +1080,17 @@
                         "type": "FIELD",
                         "name": "value_type",
                         "content": {
-                          "type": "SYMBOL",
-                          "name": "native_type"
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "native_type"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "trait_type"
+                            }
+                          ]
                         }
                       }
                     ]
@@ -1151,7 +1188,7 @@
           "name": "value_type",
           "content": {
             "type": "SYMBOL",
-            "name": "native_type"
+            "name": "parameter_type"
           }
         }
       ]
@@ -1175,8 +1212,8 @@
               "name": "native_type"
             },
             {
-              "type": "STRING",
-              "value": "uint"
+              "type": "SYMBOL",
+              "name": "native_type"
             }
           ]
         },
@@ -1313,8 +1350,17 @@
           "value": "'"
         },
         {
-          "type": "PATTERN",
-          "value": "[A-Z0-9]{41}"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[A-Z0-9]{41}"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[A-Z0-9]{40}"
+            }
+          ]
         }
       ]
     },
@@ -2142,5 +2188,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

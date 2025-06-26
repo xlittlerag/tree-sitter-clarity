@@ -1,0 +1,33 @@
+{
+  "grammars": [
+    {
+      "name": "clarity",
+      "camelcase": "Clarity",
+      "scope": "source.clar",
+      "path": ".",
+      "file-types": [
+        "clar"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
+      "injection-regex": "^(clar|clarity)$"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.5",
+    "license": "MIT",
+    "description": "Tree sitter parser for Clarity",
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-clarity"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

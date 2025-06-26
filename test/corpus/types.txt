@@ -22,7 +22,9 @@ Booleans
         (identifier)
         (native_type
           (list_type
-            (native_type)))
+	    (parameter_type
+	      (native_type)
+	    )))
         (list_lit
           (list_lit_token)
           (bool_lit)
