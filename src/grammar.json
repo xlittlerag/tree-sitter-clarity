@@ -432,17 +432,8 @@
               "name": "function_signature"
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_function_call"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_literal"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_parameter"
             }
           ]
         },
@@ -471,17 +462,8 @@
               "name": "function_signature"
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_function_call"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_literal"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_parameter"
             }
           ]
         },
@@ -1776,6 +1758,10 @@
         },
         {
           "type": "STRING",
+          "value": "contract-hash?"
+        },
+        {
+          "type": "STRING",
           "value": "contract-of"
         },
         {
@@ -1964,11 +1950,19 @@
         },
         {
           "type": "STRING",
+          "value": "restrict-assets?"
+        },
+        {
+          "type": "STRING",
           "value": "secp256k1-recover?"
         },
         {
           "type": "STRING",
           "value": "secp256k1-verify"
+        },
+        {
+          "type": "STRING",
+          "value": "secp256r1-verify"
         },
         {
           "type": "STRING",
@@ -2017,6 +2011,10 @@
         {
           "type": "STRING",
           "value": "stx-transfer?"
+        },
+        {
+          "type": "STRING",
+          "value": "to-ascii?"
         },
         {
           "type": "STRING",
@@ -2090,6 +2088,10 @@
         {
           "type": "STRING",
           "value": "stacks-block-height"
+        },
+        {
+          "type": "STRING",
+          "value": "stacks-block-time"
         },
         {
           "type": "STRING",

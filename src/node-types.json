@@ -893,6 +893,14 @@
           "named": true
         },
         {
+          "type": "global",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "int_lit",
           "named": true
         },
@@ -1000,6 +1008,14 @@
         },
         {
           "type": "function_signature",
+          "named": true
+        },
+        {
+          "type": "global",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -1822,6 +1838,10 @@
     "named": false
   },
   {
+    "type": "contract-hash?",
+    "named": false
+  },
+  {
     "type": "contract-of",
     "named": false
   },
@@ -2138,11 +2158,19 @@
     "named": false
   },
   {
+    "type": "restrict-assets?",
+    "named": false
+  },
+  {
     "type": "secp256k1-recover?",
     "named": false
   },
   {
     "type": "secp256k1-verify",
+    "named": false
+  },
+  {
+    "type": "secp256r1-verify",
     "named": false
   },
   {
@@ -2171,6 +2199,10 @@
   },
   {
     "type": "stacks-block-height",
+    "named": false
+  },
+  {
+    "type": "stacks-block-time",
     "named": false
   },
   {
@@ -2219,6 +2251,10 @@
   },
   {
     "type": "time",
+    "named": false
+  },
+  {
+    "type": "to-ascii?",
     "named": false
   },
   {
