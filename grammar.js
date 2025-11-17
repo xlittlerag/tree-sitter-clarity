@@ -6,6 +6,7 @@ const GLOBALS = [
   "is-in_mainnet",
   "is-in-regtest",
   "stacks-block-height",
+  "stacks-block-time",
   "stx-liquid-supply",
   "tenure-height",
   "tx-sender",
@@ -58,6 +59,7 @@ const OTHER_NATIVE_FUNCTIONS = [
   "buff-to-uint-le",
   "concat",
   "contract-call?",
+  "contract-hash?",
   "contract-of",
   "default-to",
   "element-at",
@@ -105,8 +107,10 @@ const OTHER_NATIVE_FUNCTIONS = [
   "principal-of?",
   "print",
   "replace-at?",
+  "restrict-assets?",
   "secp256k1-recover?",
   "secp256k1-verify",
+  "secp256r1-verify",
   "sha256",
   "sha512",
   "sha512/256",
@@ -119,6 +123,7 @@ const OTHER_NATIVE_FUNCTIONS = [
   "stx-get-balance",
   "stx-transfer-memo?",
   "stx-transfer?",
+  "to-ascii?",
   "to-consensus-buff?",
   "to-int",
   "to-uint",
@@ -239,7 +244,7 @@ module.exports = grammar({
         seq(
           "define-private",
           $.function_signature,
-          choice($._function_call, $._literal),
+          $._parameter,
         ),
       ),
 
@@ -248,7 +253,7 @@ module.exports = grammar({
         seq(
           "define-read-only",
           $.function_signature,
-          choice($._function_call, $._literal),
+          $._parameter,
         ),
       ),
 

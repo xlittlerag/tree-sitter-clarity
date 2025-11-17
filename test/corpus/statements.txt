@@ -154,3 +154,133 @@ Trait within tuple parameter
 		        (identifier)))))
 		(native_type))))))
       (bool_lit))))
+
+
+=====================================
+Clarity 4: stacks-block-time keyword
+=====================================
+
+(define-read-only (get-current-block-time)
+  stacks-block-time
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier))
+      (global))))
+
+
+=====================================
+Clarity 4: contract-hash? function
+=====================================
+
+(define-read-only (verify-contract (contract principal))
+  (contract-hash? contract)
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type))))
+      (basic_native_form
+        (native_identifier)
+        (identifier)))))
+
+
+=====================================
+Clarity 4: restrict-assets? function
+=====================================
+
+(define-public (safe-call (recipient principal))
+  (restrict-assets? (list ) (ok true))
+)
+
+---
+
+(source
+  (function_definition
+    (public_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type))))
+      (basic_native_form
+        (native_identifier)
+        (list_lit
+          (list_lit_token))
+        (response_lit
+          (bool_lit))))))
+
+
+=====================================
+Clarity 4: to-ascii? function
+=====================================
+
+(define-read-only (convert-to-ascii (value principal))
+  (to-ascii? value)
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type))))
+      (basic_native_form
+        (native_identifier)
+        (identifier)))))
+
+
+=====================================
+Clarity 4: secp256r1-verify function
+=====================================
+
+(define-read-only (verify-passkey (message (buff 32)) (signature (buff 64)) (public-key (buff 33)))
+  (secp256r1-verify message signature public-key)
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type))))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type))))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type)))))
+      (basic_native_form
+        (native_identifier)
+        (identifier)
+        (identifier)
+        (identifier)))))
