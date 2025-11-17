@@ -65,5 +65,24 @@
           };
         }
       );
+
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          tests = pkgs.runCommand "tree-sitter-clarity-tests" {
+            nativeBuildInputs = with pkgs; [ tree-sitter gcc ];
+          } ''
+            export HOME=$TMPDIR
+            cp -r ${self} source
+            chmod -R +w source
+            cd source
+            tree-sitter test
+            touch $out
+          '';
+        }
+      );
     };
 }
