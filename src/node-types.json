@@ -1245,7 +1245,6 @@
   {
     "type": "source",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -1822,8 +1821,7 @@
   },
   {
     "type": "comment",
-    "named": true,
-    "extra": true
+    "named": true
   },
   {
     "type": "concat",
@@ -1843,6 +1841,10 @@
   },
   {
     "type": "contract-of",
+    "named": false
+  },
+  {
+    "type": "current-contract",
     "named": false
   },
   {
@@ -1946,6 +1948,14 @@
     "named": false
   },
   {
+    "type": "get-stacks-block-info?",
+    "named": false
+  },
+  {
+    "type": "get-tenure-info?",
+    "named": false
+  },
+  {
     "type": "hash160",
     "named": false
   },
@@ -1998,11 +2008,11 @@
     "named": false
   },
   {
-    "type": "is-in-regtest",
+    "type": "is-in-mainnet",
     "named": false
   },
   {
-    "type": "is-in_mainnet",
+    "type": "is-in-regtest",
     "named": false
   },
   {
