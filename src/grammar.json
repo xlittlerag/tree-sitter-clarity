@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "clarity",
   "word": "identifier",
   "rules": {
@@ -1822,6 +1821,14 @@
         },
         {
           "type": "STRING",
+          "value": "get-stacks-block-info?"
+        },
+        {
+          "type": "STRING",
+          "value": "get-tenure-info?"
+        },
+        {
+          "type": "STRING",
           "value": "hash160"
         },
         {
@@ -2079,7 +2086,7 @@
         },
         {
           "type": "STRING",
-          "value": "is-in_mainnet"
+          "value": "is-in-mainnet"
         },
         {
           "type": "STRING",
@@ -2096,6 +2103,10 @@
         {
           "type": "STRING",
           "value": "stx-liquid-supply"
+        },
+        {
+          "type": "STRING",
+          "value": "current-contract"
         },
         {
           "type": "STRING",
@@ -2190,6 +2201,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": [],
-  "reserved": {}
+  "supertypes": []
 }
+
