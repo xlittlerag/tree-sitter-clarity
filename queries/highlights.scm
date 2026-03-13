@@ -59,6 +59,8 @@
  "burn-block-height"
  "chain-id"
  "contract-caller"
+ "current-contract"
+ "is-in-mainnet"
  "is-in-regtest"
  "stacks-block-height"
  "stx-liquid-supply"
