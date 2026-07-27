@@ -63,6 +63,7 @@ const OTHER_NATIVE_FUNCTIONS = [
   "contract-hash?",
   "contract-of",
   "default-to",
+  "ed25519-verify",
   "element-at",
   "element-at?",
   "filter",
@@ -74,6 +75,7 @@ const OTHER_NATIVE_FUNCTIONS = [
   "ft-get-supply",
   "ft-get-balance",
   "get",
+  "get-bitcoin-tx-output?",
   "get-block-info?",
   "get-burn-block-info?",
   "get-stacks-block-info?",
@@ -110,7 +112,7 @@ const OTHER_NATIVE_FUNCTIONS = [
   "principal-of?",
   "print",
   "replace-at?",
-  "restrict-assets?",
+  "secp256k1-decompress?",
   "secp256k1-recover?",
   "secp256k1-verify",
   "secp256r1-verify",
@@ -137,6 +139,20 @@ const OTHER_NATIVE_FUNCTIONS = [
   "unwrap-panic",
   "var-get",
   "var-set",
+  "verify-merkle-proof",
+];
+
+// Allowance forms, only valid inside the allowance list of a
+// `restrict-assets?` or `as-contract?` expression.
+// `with-all-assets-unsafe` is handled separately: it is only valid in
+// `as-contract?`, and only by itself.
+const ALLOWANCE_FUNCTIONS = [
+  "with-ft",
+  "with-nft",
+  "with-pox",
+  "with-stacking",
+  "with-staking",
+  "with-stx",
 ];
 
 const NUMBER = /\d+/;
@@ -272,6 +288,8 @@ module.exports = grammar({
     _native_function_call: ($) =>
       choice(
         $.let_expression,
+        $.restrict_assets_expression,
+        $.as_contract_expression,
         $.basic_native_form,
       ),
 
@@ -389,6 +407,42 @@ module.exports = grammar({
         $._function_call,
         $.identifier,
       ),
+
+    restrict_assets_expression: ($) =>
+      enclosed(
+        seq(
+          field("operator", "restrict-assets?"),
+          field("asset_owner", $._parameter),
+          $.allowance_list,
+          repeat1($._parameter),
+        ),
+      ),
+
+    as_contract_expression: ($) =>
+      enclosed(
+        seq(
+          field("operator", "as-contract?"),
+          choice($.allowance_list, $.unsafe_allowance_list),
+          repeat1($._parameter),
+        ),
+      ),
+
+    // Allowance lists, e.g. ((with-stx amount) (with-pox)).
+    allowance_list: ($) => enclosed(repeat($.allowance)),
+
+    allowance: ($) =>
+      enclosed(
+        seq(
+          field("operator", $.allowance_identifier),
+          optional(repeat($._parameter)),
+        ),
+      ),
+
+    allowance_identifier: (_) => choice(...ALLOWANCE_FUNCTIONS),
+
+    unsafe_allowance_list: ($) => enclosed($.unsafe_allowance),
+
+    unsafe_allowance: (_) => enclosed("with-all-assets-unsafe"),
 
     _literal: ($) =>
       choice(

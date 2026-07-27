@@ -14,35 +14,32 @@ Public function definition
 )
 
 ---
-    (source
-      (function_definition
-        (public_function
-          (function_signature
-            (identifier)
-            (function_parameter
-              (identifier)
-              (parameter_type
-                (native_type
-                  (ascii_string_type)))))
-          (let_expression
-            (local_binding
-              (identifier)
-              (basic_native_form
-                (native_identifier)
-                (int_lit)
-                (int_lit)))
-            (local_binding
-              (identifier)
-              (uint_lit))
-            (local_binding
-              (identifier)
-              (global))
-            (response_lit
-              (int_lit))))))
 
-
-
-
+(source
+  (function_definition
+    (public_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (ascii_string_type)))))
+      (let_expression
+        (local_binding
+          (identifier)
+          (basic_native_form
+            (native_identifier)
+            (int_lit)
+            (int_lit)))
+        (local_binding
+          (identifier)
+          (uint_lit))
+        (local_binding
+          (identifier)
+          (global))
+        (response_lit
+          (int_lit))))))
 
 =====================================
 Private function definition
@@ -61,32 +58,31 @@ Private function definition
 
 ---
 
-    (source
-      (function_definition
-        (private_function
-          (function_signature
-            (identifier)
-            (function_parameter
-              (identifier)
-              (parameter_type
-                (native_type
-                  (ascii_string_type)))))
-          (let_expression
-            (local_binding
-              (identifier)
-              (basic_native_form
-                (native_identifier)
-                (int_lit)
-                (int_lit)))
-            (local_binding
-              (identifier)
-              (uint_lit))
-            (local_binding
-              (identifier)
-              (global))
-            (response_lit
-              (int_lit))))))
-
+(source
+  (function_definition
+    (private_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (ascii_string_type)))))
+      (let_expression
+        (local_binding
+          (identifier)
+          (basic_native_form
+            (native_identifier)
+            (int_lit)
+            (int_lit)))
+        (local_binding
+          (identifier)
+          (uint_lit))
+        (local_binding
+          (identifier)
+          (global))
+        (response_lit
+          (int_lit))))))
 
 =====================================
 Trait definition
@@ -103,29 +99,28 @@ Trait definition
 
 ---
 
-    (source
-      (comment)
-      (trait_definition
-        (identifier)
-        (comment)
-        (function_signature_for_trait
-          (identifier)
-          (parameter_type
-            (native_type))
-          (parameter_type
-            (native_type))
-          (parameter_type
-            (native_type))
-          (parameter_type
+(source
+  (comment)
+  (trait_definition
+    (identifier)
+    (comment)
+    (function_signature_for_trait
+      (identifier)
+      (parameter_type
+        (native_type))
+      (parameter_type
+        (native_type))
+      (parameter_type
+        (native_type))
+      (parameter_type
+        (native_type
+          (optional_type
             (native_type
-              (optional_type
-                (native_type
-                  (buffer_type)))))
-          (native_type
-            (response_type
-  	      (native_type)
-              (native_type))))))
-
+              (buffer_type)))))
+      (native_type
+        (response_type
+          (native_type)
+          (native_type))))))
 
 =====================================
 Trait within tuple parameter
@@ -140,21 +135,20 @@ Trait within tuple parameter
   (function_definition
     (private_function
       (function_signature
-	(identifier)
-	(function_parameter
-	  (identifier)
-	  (parameter_type
-	    (native_type
-	      (response_type
-	      	(native_type
-		  (tuple_type
-		    (identifier)
-		    (parameter_type
-		      (trait_type
-		        (identifier)))))
-		(native_type))))))
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (response_type
+                (native_type
+                  (tuple_type
+                    (identifier)
+                    (parameter_type
+                      (trait_type
+                        (identifier)))))
+                (native_type))))))
       (bool_lit))))
-
 
 =====================================
 Clarity 4: stacks-block-time keyword
@@ -172,7 +166,6 @@ Clarity 4: stacks-block-time keyword
       (function_signature
         (identifier))
       (global))))
-
 
 =====================================
 Clarity 4: contract-hash? function
@@ -197,13 +190,12 @@ Clarity 4: contract-hash? function
         (native_identifier)
         (identifier)))))
 
-
 =====================================
 Clarity 4: restrict-assets? function
 =====================================
 
 (define-public (safe-call (recipient principal))
-  (restrict-assets? (list ) (ok true))
+  (restrict-assets? tx-sender ((with-stx u100)) true)
 )
 
 ---
@@ -217,13 +209,13 @@ Clarity 4: restrict-assets? function
           (identifier)
           (parameter_type
             (native_type))))
-      (basic_native_form
-        (native_identifier)
-        (list_lit
-          (list_lit_token))
-        (response_lit
-          (bool_lit))))))
-
+      (restrict_assets_expression
+        (global)
+        (allowance_list
+          (allowance
+            (allowance_identifier)
+            (uint_lit)))
+        (bool_lit)))))
 
 =====================================
 Clarity 4: to-ascii? function
@@ -247,7 +239,6 @@ Clarity 4: to-ascii? function
       (basic_native_form
         (native_identifier)
         (identifier)))))
-
 
 =====================================
 Clarity 4: secp256r1-verify function
@@ -284,3 +275,220 @@ Clarity 4: secp256r1-verify function
         (identifier)
         (identifier)
         (identifier)))))
+
+=====================================
+Clarity 4: as-contract? with allowances
+=====================================
+
+(define-public (transfer-from-contract (amount uint) (recipient principal))
+  (as-contract? ((with-stx amount)) true)
+)
+
+---
+
+(source
+  (function_definition
+    (public_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type)))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type))))
+      (as_contract_expression
+        (allowance_list
+          (allowance
+            (allowance_identifier)
+            (identifier)))
+        (bool_lit)))))
+
+=====================================
+Clarity 6: with-staking and with-pox allowances
+=====================================
+
+(define-public (delegate-safely (amount uint))
+  (restrict-assets? tx-sender ((with-staking amount) (with-pox)) true)
+)
+
+---
+
+(source
+  (function_definition
+    (public_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type))))
+      (restrict_assets_expression
+        (global)
+        (allowance_list
+          (allowance
+            (allowance_identifier)
+            (identifier))
+          (allowance
+            (allowance_identifier)))
+        (bool_lit)))))
+
+=====================================
+Clarity 6: ed25519-verify function
+=====================================
+
+(define-read-only (verify-ed25519 (message (buff 32)) (signature (buff 64)) (public-key (buff 32)))
+  (ed25519-verify message signature public-key)
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type))))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type))))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type)))))
+      (basic_native_form
+        (native_identifier)
+        (identifier)
+        (identifier)
+        (identifier)))))
+
+=====================================
+Clarity 6: secp256k1-decompress? function
+=====================================
+
+(define-read-only (decompress-key (public-key (buff 33)))
+  (secp256k1-decompress? public-key)
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type)))))
+      (basic_native_form
+        (native_identifier)
+        (identifier)))))
+
+=====================================
+Clarity 6: get-bitcoin-tx-output? function
+=====================================
+
+(define-read-only (read-btc-output (tx (buff 1024)) (index uint))
+  (get-bitcoin-tx-output? tx index)
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type))))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type))))
+      (basic_native_form
+        (native_identifier)
+        (identifier)
+        (identifier)))))
+
+=====================================
+Clarity 6: verify-merkle-proof function
+=====================================
+
+(define-read-only (check-proof (leaf-hash (buff 32)) (root-hash (buff 32)) (tx-index uint) (tx-count uint) (sibling-hashes (list 24 (buff 32))))
+  (verify-merkle-proof leaf-hash root-hash tx-index tx-count sibling-hashes)
+)
+
+---
+
+(source
+  (function_definition
+    (read_only_function
+      (function_signature
+        (identifier)
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type))))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (buffer_type))))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type)))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type)))
+        (function_parameter
+          (identifier)
+          (parameter_type
+            (native_type
+              (list_type
+                (parameter_type
+                  (native_type
+                    (buffer_type))))))))
+      (basic_native_form
+        (native_identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)))))
+
+=====================================
+Clarity 4: as-contract? with with-all-assets-unsafe
+=====================================
+
+(define-public (do-anything)
+  (as-contract? ((with-all-assets-unsafe)) true)
+)
+
+---
+
+(source
+  (function_definition
+    (public_function
+      (function_signature
+        (identifier))
+      (as_contract_expression
+        (unsafe_allowance_list
+          (unsafe_allowance))
+        (bool_lit)))))
